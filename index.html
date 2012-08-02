@@ -67,14 +67,14 @@
     <ul data-role="listview">
       <li>
         <a href="#plan">
-          <h3>Create a Training Plan</h3>
-          <p>Get improved workout recommendations and daily reminders.</p>
+          <h3>Get a Training Plan</h3>
+          <p>for improved workout recommendations and reminders.</p>
         </a>
       </li>
       <li data-role="list-divider">On Your Own</li>
-      <li><a href="#walk">20 Minute Walk</a></li>
+      <li><a href="#jog">20 Minute Walk</a></li>
       <li><a href="#jog">30 Minute Jog</a></li>
-      <li><a href="#run">1 Hour Tempo Run</a></li>
+      <li><a href="#jog">1 Hour Tempo Run</a></li>
       <li data-role="list-divider">With Others</li>
       <li>
         <a href="#yoga">
@@ -102,15 +102,38 @@
   </div><!-- /page -->
 
   <!-- Start of second page -->
-  <div data-role="page" id="plan">
+  <div data-role="page" id="jog">
 
     <div data-role="header">
-      <h1>Bar</h1>
+      <a href="#home" data-icon="back" data-direction="reverse" data-rel="back">Back</a>
+      <h1>30 Minute Jog</h1>
     </div><!-- /header -->
 
     <div data-role="content">
-      <p>I'm the second in the source order so I'm hidden when the page loads. I'm just shown if a link that references my id is beeing clicked.</p>
-      <p><a href="#home">Back to foo</a></p>
+      <h3>Challenge</h4>
+      <p>Run <b>30 minutes</b> at a <b>10 minute</b> pace.</p>
+
+      <form>
+        <fieldset data-role="fieldcontain">
+          <label for="duration">Minutes</label>
+          <input type="range" name="duration" id="duration" data-highlight="true" min="0" value="30" max="100"/>
+        </fieldset>
+
+        <fieldset data-role="fieldcontain">
+          <label for="pace">Pace</label>
+          <input type="range" name="pace" id="pace" data-highlight="true" min="4" value="10" max="30"/>
+        </fieldset>
+
+        <fieldset data-role="fieldcontain">
+          <label>
+            <input type="checkbox" name="share" checked="checked" />
+            <b>Share</b> you're doing this workout with your friends, so
+            they can encourage you (and maybe even join in)!
+          </label>
+        </fieldset>
+
+        <a href="#" data-role="button" data-theme="b">Let&rsquo;s Do It</a>
+      </form>
     </div><!-- /content -->
 
     <div data-role="footer">
