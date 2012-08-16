@@ -3,11 +3,11 @@ mixin footer(active)
   div(data-role="footer", class="footer")
     div(data-role="navbar")
       ul
-        - var buttons = 'Go Search Plan Friends'.split(/\s+/)
+        - var buttons = 'Plan Go Search Friends'.split(/\s+/)
         each button in buttons
           - var className = button.toLowerCase();
           - if (className === active) {
           -   className = className + ' ui-btn-active'
           - }
-          li: a(href="/", class=className, data-icon="custom")= button
+          li: a(href="/" + className + '.html', class=className, data-icon="custom")= button
 

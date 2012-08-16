@@ -1,0 +1,25 @@
+extends layout
+
+block header
+  h1 Plan
+
+block content
+  h3 You have no plan
+  a(href="pick-plan.html", data-role="button", data-theme="b") Get a training plan
+  p for workout recommendations and reminders.
+
+  h4 or do a workout right now
+  ul(data-role="listview")
+    li(data-role="list-divider") Workouts You Can Do Now
+    li: a(href="go.html") 20 Minute Walk
+    li: a(href="go.html") 30 Minute
+    li: a(href="go.html") 20 Minute Walk
+    li: a(href="go.html")
+      h3 Asana Yoga
+      p $20. Starts at 3pm (in 30 minutes). 10 miles away.
+    li: a(href="go.html")
+      h3 Divis Up or Shut Up (Hill Run)
+      p Free. Starts at 6:30pm (in 3:30 minutes). 10 miles away.
+
+block footer
+  mixin footer("plan")
