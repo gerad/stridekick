@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stridekick
+    </title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.js"></script>
+  </head>
+  <body>
+    <div data-role="page">
+      <!-- - header-->
+      <div data-role="header">
+        <h1>Today</h1>
+      </div>
+      <!-- - content-->
+      <h2>Run 5 miles at a 7:30 pace.</h2>
+      <ul data-role="listview">
+        <h4>Suggested Route</h4>
+        <li><a href="routes.html"><img src="http://maps.googleapis.com/maps/api/staticmap?center=3000+Sand+Hill,Menlo+Park,CA&amp;zoom=13&amp;size=115x115&amp;maptype=roadmap&amp;sensor=false">
+            <h4>Old La Honda Out & Back</h4>
+            <p>5 miles, 10 minutes away.</p></a></li>
+        <li><a href="routes.html">More Suggestions</a></li>
+      </ul><a href="completed.html" data-role="button" data-theme="b">Did it!</a><a href="short.html" data-role="button">Cut it short</a><a href="#" data-role="button" data-theme="a">Can't get to it today</a>
+      <!-- - footer-->
+            <div data-role="footer" class="footer">
+              <div data-role="navbar">
+                <ul>
+                  <li><a href="/" data-icon="custom" class="go ui-btn-active">Go</a></li>
+                  <li><a href="/" data-icon="custom" class="search">Search</a></li>
+                  <li><a href="/" data-icon="custom" class="plan">Plan</a></li>
+                  <li><a href="/" data-icon="custom" class="friends">Friends</a></li>
+                </ul>
+              </div>
+            </div>
+    </div>
+  </body>
+</html>

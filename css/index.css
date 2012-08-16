@@ -1,0 +1,50 @@
+html {
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+#phone {
+  margin: 0 auto;
+  height: 480px;
+  padding: 126px 38px;
+  background: url("../images/iphone.png") no-repeat;
+}
+#time {
+  height: 10px;
+  background-color: #000;
+  color: #bfbfbf;
+  font: 13px/13px helvetica, sans-serif;
+  text-align: center;
+  padding: 3px 0px 7px;
+}
+#phone,
+iframe {
+  width: 320px;
+}
+iframe {
+  margin: 0;
+  padding: 0;
+  border: none;
+  width: 320px;
+  height: 460px;
+}
+@media screen and (max-width: 400px) {
+  #phone {
+    margin: 0;
+    padding: 0;
+    background: none;
+  }
+  #time {
+    display: none;
+  }
+  #phone,
+  iframe {
+    min-width: 100%;
+    min-height: 100%;
+  }
+}
