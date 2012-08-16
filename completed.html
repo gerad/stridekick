@@ -13,18 +13,24 @@
   <body>
     <div data-role="page">
       <!-- - header-->
-      <div data-role="header">
-        <h1>Today</h1>
+      <div data-role="header"><a href="index.html" data-icon="back" data-direction="reverse" data-rel="back">Today</a>
+        <h1>Done!</h1>
       </div>
       <!-- - content-->
-      <h2>Run 5 miles at a 7:30 pace.</h2>
-      <ul data-role="listview">
-        <h4>Suggested Route</h4>
-        <li><a href="routes.html"><img src="http://maps.googleapis.com/maps/api/staticmap?center=3000+Sand+Hill,Menlo+Park,CA&amp;zoom=13&amp;size=115x115&amp;maptype=roadmap&amp;sensor=false">
-            <h4>Old La Honda Out & Back</h4>
-            <p>5 miles, 10 minutes away.</p></a></li>
-        <li><a href="routes.html">More Suggestions</a></li>
-      </ul><a href="completed.html" data-role="button" data-theme="b">Did it!</a><a href="short.html" data-role="button">Cut it short</a><a href="#" data-role="button" data-theme="a">Can't get to it today</a>
+      <h2>Sweet! How&rsquo;d it Go?</h2>
+      <div data-role="fieldcontain">
+        <div class="ui-grid-b">
+          <div class="ui-block-a">Super Hard!</div>
+          <div class="ui-block-b">About Average</div>
+          <div class="ui-block-c">Rocked It!</div>
+        </div>
+        <label for="difficulty"></label>
+        <input id="difficulty" type="range" data-highlight="true" min="0" max="100" value="50">
+      </div>
+      <div data-role="fieldcontain">
+        <label for="notes">Notes (optional):</label>
+        <textarea id="notes"></textarea>
+      </div><a href="tomorrow.html" data-role="button" data-theme="b">Save</a>
       <!-- - footer-->
             <div data-role="footer" class="footer">
               <div data-role="navbar">
