@@ -1,0 +1,27 @@
+extends layout
+
+block header
+  a(href="index.html", data-icon="back", data-direction="reverse", data-rel="back") Today
+  h1 Suggested Workouts
+
+block content
+  h1 No time?
+  p No problem. Maybe you can squeeze in a shorter workout instead?
+
+  h3 Shorter workouts
+  ul(data-role="listview")
+    li: a(href="today.html")
+      h4 Speed Work
+      p An intense, 45 minute workout.
+    li: a(href="today.html")
+      h4 Hill Repeats
+      p Hit your max heart rate 20 minutes and be done in 30.
+    li: a(href="today.html")
+      h4 Bosu Ball Video
+      p A 20 minute video workout you can do at home.
+
+  a(href="tomorrow.html", data-role="button", data-theme="b")
+    | No Thanks! I'll take a rest day.
+
+block footer
+  mixin footer("go")
