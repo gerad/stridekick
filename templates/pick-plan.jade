@@ -1,0 +1,29 @@
+extends layout
+
+block header
+  a(href="plan.html", data-icon="back", data-direction="reverse") Plan
+  h1 Pick a Plan
+
+block content
+  h3 What&rsquo;s your goal?
+  ul(data-role="listview")
+    li Getting in Shape
+      ul
+        li: a(href="customize-plan.html") Mile Challenge
+        li: a(href="customize-plan.html") Couch to 5k
+        li: a(href="customize-plan.html") Power Weight Loss
+    li Staying Fit
+      ul
+        li: a(href="customize-plan.html") Mind Body Health
+        li: a(href="customize-plan.html") Bootcamp Basics
+        li: a(href="customize-plan.html") Power Weight Loss
+    li Competing in a Race
+      ul(data-role="listview", data-filter="true")
+        li: a(href="customize-plan.html") NorthFace Endurance Challenge
+        li: a(href="customize-plan.html") California International Marathon
+        li: a(href="customize-plan.html") US Half Marathon
+        li: a(href="customize-plan.html") Lake Tahoe Ironman
+        li: a(href="customize-plan.html") Lake Tahoe Triathlon
+
+block footer
+  mixin footer("plan")

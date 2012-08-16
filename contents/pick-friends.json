@@ -1,0 +1,28 @@
+{
+  "template": "pick-friends.jade",
+  "friends": [
+    "Adam Kinkaid",
+    "Alex Wickerham",
+    "Avery Johnson",
+    "Bob Cabot",
+    "Caleb Booth",
+    "Christopher Adams",
+    "Culver James",
+    "David Walsh",
+    "Drake Alfred",
+    "Elizabeth Bacon",
+    "Emery Parker",
+    "Enid Voldon",
+    "Francis Wall",
+    "Graham Smith",
+    "Greta Peete",
+    "Harvey Walls",
+    "Mike Farnsworth",
+    "Murray Vanderbuilt",
+    "Nathan Williams",
+    "Paul Baker",
+    "Pete Mason",
+    "Rod Tarker",
+    "Sawyer Wakefield"
+  ]
+}
