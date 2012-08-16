@@ -1,0 +1,99 @@
+.footer .ui-btn .ui-btn-inner {
+  padding-top: 40px !important;
+}
+
+.footer .ui-btn .ui-icon {
+  width: 30px!important;
+  height: 30px!important;
+  margin-left: -15px !important;
+  box-shadow: none!important;
+  -moz-box-shadow: none!important;
+  -webkit-box-shadow: none!important;
+  -webkit-border-radius: 0 !important;
+  border-radius: 0 !important;
+}
+
+.footer .ui-icon {
+  background: 50% 50% no-repeat;
+  background-size: 24px 22px;
+}
+
+/* active icons */
+.footer .go.ui-btn-active .ui-icon {
+  background-image: url(../glyphish/icons/78-stopwatch.png);
+}
+.footer .search.ui-btn-active .ui-icon {
+  background-image: url(../glyphish/icons/73-radar.png);
+}
+.footer .plan.ui-btn-active .ui-icon {
+  background-image: url(../glyphish/icons/103-map.png);
+}
+
+/* inactive icons */
+.footer .go .ui-icon {
+  background-image: url(../glyphish/icons/78-stopwatch-inverted.png);
+}
+.footer .search .ui-icon {
+  background-image: url(../glyphish/icons/73-radar-inverted.png);
+}
+.footer .plan .ui-icon {
+  background-image: url(../glyphish/icons/103-map-inverted.png);
+}
+
+/* Red button theme for JQuery Mobile
+ * - Use data-theme="r" for red versions of the default JQuery Mobile Buttons.
+ ******************************************************************************************/
+
+.ui-btn-up-r {
+    border: 1px solid #721414;
+    background: #AB2525;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 -1px 1px #000;
+    background-image: -moz-linear-gradient(top, #C54E4E, #AB2525);
+    background-image: -webkit-gradient(linear,left top,left bottom,
+        color-stop(0, #C54E4E),
+        color-stop(1, #AB2525));
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#C54E4E', EndColorStr='#AB2525')";
+}
+.ui-btn-up-r a.ui-link-inherit {
+    color: #fff;
+}
+.ui-btn-hover-r {
+    border: 1px solid #6E0000;
+    background: #B64B4B;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 -1px 1px #000;
+    background-image: -moz-linear-gradient(top, 
+        #D47272, 
+        #B64B4B);
+    background-image: -webkit-gradient(linear,left top,left bottom,
+        color-stop(0, #D47272),
+        color-stop(1, #B64B4B));
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#D47272', EndColorStr='#B64B4B')";
+}
+.ui-btn-hover-r a.ui-link-inherit {
+    color: #fff;
+}
+.ui-btn-down-r {
+    border: 1px solid #772222;
+    background: #C54E4E;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 -1px 1px #000;
+    background-image: -moz-linear-gradient(top, #9E3939, #C54E4E);
+    background-image: -webkit-gradient(linear,left top,left bottom,
+        color-stop(0, #9E3939),
+        color-stop(1, #C54E4E));
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#9E3939', EndColorStr='#C54E4E')";
+}
+.ui-btn-down-r a.ui-link-inherit {
+    color: #fff;
+}
+.ui-btn-up-r,
+.ui-btn-hover-r,
+.ui-btn-down-r {
+    font-family: Helvetica, Arial, sans-serif;
+    text-decoration: none;
+}
