@@ -1,0 +1,23 @@
+extends layout
+
+block header
+  h1 Tomorrow
+
+block content
+  h2 Tomorrow's Workout
+  p Run 5 miles at 7:30 pace.
+  p: a(href="/") Do another workout today &raquo;
+
+  h3 Upcoming Workouts
+  ul(data-role="listview")
+    li(data-role="list-divider") This Week
+    li Tuesday - Tempo Run
+    li Thursday - Speedwork
+    li Saturday - Long Run
+    li(data-role="list-divider") Next Week
+    li Tuesday - Tempo Run
+    li Thursday - Speedwork
+    li Saturday - Long Run
+
+block footer
+  mixin footer("go")

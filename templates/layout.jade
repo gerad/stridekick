@@ -1,0 +1,28 @@
+!!! 5
+html(lang='en')
+  head
+    block head
+      meta(charset='utf-8')
+      meta(name='viewport', content='width=device-width, initial-scale=1')
+      title
+        block title
+          = locals.name
+      link(rel='stylesheet', href='http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.css')
+      link(rel='stylesheet', href='/css/layout.css')
+      script(src='http://code.jquery.com/jquery-1.7.2.min.js')
+      script(src='http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.js')
+  body
+    div(data-role="page")
+      // - header
+      div(data-role="header")
+        block header
+          h1 Header
+
+      // - content
+      block content
+        div(data-role="content")
+          p Some content
+
+      // - footer
+      include footer
+      block footer

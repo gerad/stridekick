@@ -1,0 +1,22 @@
+{
+  "name": "wintersmith-stridekick",
+  "version": "0.0.0",
+  "description": "Get out and play together!",
+  "main": "index.js",
+  "dependencies": {
+    "wintersmith": "~1.1.1",
+    "wintersmith-stylus": "~0.1.2",
+    "wintersmith-coffee": "~0.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "wintersmith preview",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gerad/stridekick.git"
+  },
+  "author": "Gerad Suyderhoud",
+  "license": "BSD"
+}
