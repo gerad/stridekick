@@ -1,23 +1,30 @@
-extends layout
+!!! 5
+html(lang='en')
+  head
+    block head
+      meta(charset='utf-8')
+      title
+        block title
+          = locals.name
+      link(rel='stylesheet', href='css/index.css')
+  body
+    #phone
+      #time
+      iframe(src="today.html")
 
-block header
-  h1 Today
+  script
+    (function() {
+      var time = document.getElementById("time"),
+          now = new Date,
+          h = now.getHours(),
+          m = now.getMinutes(),
+          p = h < 12 ? 'AM' : 'PM';
+      if (h === 0)
+        h = 12;
+      else if (h > 12)
+        h -= 12;
+      if (m < 10)
+        m = '0' + m
 
-block content
-  h2 Run 5 miles at a 7:30 pace.
-
-  ul(data-role="listview")
-    h4 Suggested Route
-    li: a(href="routes.html")
-      img(src="http://maps.googleapis.com/maps/api/staticmap?center=3000+Sand+Hill,Menlo+Park,CA&zoom=13&size=115x115&maptype=roadmap&sensor=false")
-      h4 Old La Honda Out & Back
-      p 5 miles, 10 minutes away.
-    li: a(href="routes.html") More Suggestions
-
-
-  a(href="completed.html", data-role="button", data-theme="b") Did it!
-  a(href="short.html", data-role="button") Cut it short
-  a(href="#", data-role="button", data-theme="a") Can't get to it today
-
-block footer
-  mixin footer("go")
+      time.innerHTML = h + ':' + m + ' ' + p;
+    })();
