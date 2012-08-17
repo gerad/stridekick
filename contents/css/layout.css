@@ -38,6 +38,26 @@ div.ui-slider {
   margin: 0 !important;
 }
 
+ul.plan .ui-li .ui-btn-inner a.ui-link-inherit {
+  padding: 0.25em 15px !important;
+}
+ul.plan .current .ui-li-heading {
+  margin-bottom: 0 !important;
+  font-size: x-large !important;
+  margin-top: 0em !important;
+}
+ul.plan .current .ui-btn-inner {
+  padding-right: 11px !important;
+}
+ul.plan .green { color: forestgreen; }
+ul.plan .red { color: firebrick; }
+ul.plan .gray { color: gray; }
+ul.plan .green, .red, .gray {
+  font-size: x-large;
+  line-height: large;
+  display: inline-block;
+}
+
 .footer .ui-btn .ui-btn-inner {
   padding-top: 40px !important;
 }

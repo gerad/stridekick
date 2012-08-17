@@ -5,7 +5,6 @@ block header
   h1 No time?
 
 block content
-  h1 No time?
   p No problem. Maybe you can squeeze in a shorter workout instead?
 
   h3 Shorter workouts
@@ -20,8 +19,13 @@ block content
       h4 Bosu Ball Video
       p A 20 minute video workout you can do at home.
 
-  a(href="tomorrow.html", data-role="button", data-theme="b")
+  a(href="plan.html", data-role="button", data-theme="b")
     | No Thanks! I'll take a rest day.
+
+  fieldset(data-role="fieldcontain")
+    label
+      input(type="checkbox", name="short", default="checked")
+      | Let other people doing this workout know that you can't make it.
 
 block footer
   mixin footer("go")
