@@ -1,3 +1,16 @@
+h1, h2, h3, h4, h5 {
+  margin-bottom: 0.25em;
+}
+
+ul {
+  margin: 0.25em;
+}
+
+
+h3 a.change {
+  font-size: small;
+}
+
 .footer .ui-btn .ui-btn-inner {
   padding-top: 40px !important;
 }
