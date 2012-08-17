@@ -11,6 +11,29 @@ h3 a.change {
   font-size: small;
 }
 
+.range-legend {
+  font-size: small;
+  font-style: italic;
+  margin-top: 1em;
+}
+
+.range-legend .ui-block-b {
+  text-align: center;
+}
+
+.range-legend .ui-block-c {
+  text-align: right;
+}
+
+input.ui-slider-input {
+  display: none !important;
+}
+
+div.ui-slider {
+  margin: 0 5%;
+  width: 90%;
+}
+
 .footer .ui-btn .ui-btn-inner {
   padding-top: 40px !important;
 }

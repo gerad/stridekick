@@ -5,22 +5,33 @@ block header
   h1 Done!
 
 block content
-  h2 Sweet! How&rsquo;d it Go?
-
-  div(data-role="fieldcontain")
-    .ui-grid-b
+  fieldset(data-role="fieldcontain")
+    label(for="difficulty") How&rsquo;d it Go?
+    input#difficulty(type="range", min=0, max=100, value=50)
+    .ui-grid-b.range-legend
       .ui-block-a Super Hard!
       .ui-block-b About Average
       .ui-block-c Rocked It!
 
-    label(for="difficulty")
-    input#difficulty(type="range", data-highlight="true", min=0, max=100, value=50)
+  fieldset(data-role="fieldcontain")
+    label
+      input(type="checkbox", name="short")
+      | I had to cut it short.
 
+    //
+      label(for="duration") No worries! How long did you exercise?
+      select
+        option < 5 minutes
+        option 5-15 minutes
+        option 15-30 minutes
+        option 30-45 minutes
+        option 45+ minutes
 
-  div(data-role="fieldcontain")
+  fieldset(data-role="fieldcontain")
     label(for="notes") Notes (optional):
     textarea#notes
-  a(href="tomorrow.html", data-role="button", data-theme="b") Save
+
+  a(href="plan.html", data-role="button", data-theme="b") Save
 
 block footer
   mixin footer("go")
