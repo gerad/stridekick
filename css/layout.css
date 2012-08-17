@@ -1,3 +1,63 @@
+h1, h2, h3, h4, h5 {
+  margin-bottom: 0.25em;
+}
+
+ul {
+  margin: 0.25em;
+}
+
+
+h3 a.change {
+  font-size: small;
+}
+
+.range-legend {
+  font-size: small;
+  font-style: italic;
+  margin-top: 1em;
+}
+
+.range-legend .ui-block-b {
+  text-align: center;
+}
+
+.range-legend .ui-block-c {
+  text-align: right;
+}
+
+input.ui-slider-input {
+  display: none !important;
+}
+
+div.ui-slider {
+  margin: 0 5%;
+  width: 90%;
+}
+
+.ui-header + .ui-listview-filter {
+  margin: 0 !important;
+}
+
+ul.plan .ui-li .ui-btn-inner a.ui-link-inherit {
+  padding: 0.25em 15px !important;
+}
+ul.plan .current .ui-li-heading {
+  margin-bottom: 0 !important;
+  font-size: x-large !important;
+  margin-top: 0em !important;
+}
+ul.plan .current .ui-btn-inner {
+  padding-right: 11px !important;
+}
+ul.plan .green { color: forestgreen; }
+ul.plan .red { color: firebrick; }
+ul.plan .gray { color: gray; }
+ul.plan .green, .red, .gray {
+  font-size: x-large;
+  line-height: large;
+  display: inline-block;
+}
+
 .footer .ui-btn .ui-btn-inner {
   padding-top: 40px !important;
 }

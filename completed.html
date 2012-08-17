@@ -17,28 +17,40 @@
         <h1>Done!</h1>
       </div>
       <!-- content-->
-      <h2>Sweet! How&rsquo;d it Go?</h2>
-      <div data-role="fieldcontain">
-        <div class="ui-grid-b">
+      <fieldset data-role="fieldcontain">
+        <label for="difficulty">How&rsquo;d it Go?</label>
+        <input id="difficulty" type="range" min="0" max="100" value="50">
+        <div class="ui-grid-b range-legend">
           <div class="ui-block-a">Super Hard!</div>
           <div class="ui-block-b">About Average</div>
           <div class="ui-block-c">Rocked It!</div>
         </div>
-        <label for="difficulty"></label>
-        <input id="difficulty" type="range" data-highlight="true" min="0" max="100" value="50">
-      </div>
-      <div data-role="fieldcontain">
+      </fieldset>
+      <fieldset data-role="fieldcontain">
+        <label>
+          <input type="checkbox" name="short">I had to cut it short.
+        </label><!--
+        <label for="duration">No worries! How long did you exercise?</label>
+        <select>
+          <option>< 5 minutes</option>
+          <option>5-15 minutes</option>
+          <option>15-30 minutes</option>
+          <option>30-45 minutes</option>
+          <option>45+ minutes</option>
+        </select>-->
+      </fieldset>
+      <fieldset data-role="fieldcontain">
         <label for="notes">Notes (optional):</label>
         <textarea id="notes"></textarea>
-      </div><a href="tomorrow.html" data-role="button" data-theme="b">Save</a>
+      </fieldset><a href="plan.html" data-role="button" data-theme="b">Save</a>
       <!-- footer-->
             <div data-role="footer" class="footer">
               <div data-role="navbar">
                 <ul>
-                  <li><a href="/plan.html" data-icon="custom" class="plan">Plan</a></li>
-                  <li><a href="/go ui-btn-active.html" data-icon="custom" class="go ui-btn-active">Go</a></li>
-                  <li><a href="/search.html" data-icon="custom" class="search">Search</a></li>
-                  <li><a href="/friends.html" data-icon="custom" class="friends">Friends</a></li>
+                  <li><a href="plan.html" data-icon="custom" class="plan">Plan</a></li>
+                  <li><a href="go.html" data-icon="custom" class="go ui-btn-active">Go</a></li>
+                  <li><a href="search.html" data-icon="custom" class="search">Search</a></li>
+                  <li><a href="friends.html" data-icon="custom" class="friends">Friends</a></li>
                 </ul>
               </div>
             </div>

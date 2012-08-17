@@ -14,26 +14,43 @@
     <div data-role="page">
       <!-- header-->
       <div data-role="header"><a href="plan.html" data-icon="back" data-direction="reverse">Plan</a>
-        <h1>Now</h1>
+        <h1>Now</h1><a href="completed.html">Finish</a>
       </div>
       <!-- content-->
-      <h2>Run 5 miles at a 7:30 pace.</h2>
+      <h2>5 Mile Tempo Run</h2>
+      <ul>
+        <li>1 mile warm-up</li>
+        <li>3 miles at a 7:30 pace</li>
+        <li>1 mile cooldown</li>
+      </ul>
+      <h3>Suggested Route <a href="search.html" class="change">change &raquo;</a></h3>
       <ul data-role="listview">
-        <h4>Suggested Route</h4>
-        <li><a href="routes.html"><img src="http://maps.googleapis.com/maps/api/staticmap?center=3000+Sand+Hill,Menlo+Park,CA&amp;zoom=13&amp;size=115x115&amp;maptype=roadmap&amp;sensor=false">
+        <li><a href="#"><img src="http://maps.googleapis.com/maps/api/staticmap?center=3000+Sand+Hill,Menlo+Park,CA&amp;zoom=13&amp;size=115x115&amp;maptype=roadmap&amp;sensor=false">
             <h4>Old La Honda Out & Back</h4>
             <p>5 miles, 10 minutes away.</p></a></li>
-        <li><a href="routes.html">More Suggestions</a></li>
       </ul>
-      <h3>Did you do it?</h3><a href="completed.html" data-role="button" data-theme="b">Did it!</a><a href="short.html" data-role="button">Cut it short</a><a href="nogo.html" data-role="button" data-theme="a">Can't get to it today</a>
+      <h3>Invite</h3>
+      <div class="ui-grid-c">
+        <div style="width:66%" class="ui-block-a">
+          <p>Ask your friends if anybody wants to join this workout.</p>
+        </div>
+        <div style="text-align:center" class="ui-block-b"><a href="#" data-role="button" data-icon="plus" data-inline="true">Invite</a></div>
+      </div>
+      <h3>Comments</h3>
+      <div class="ui-grid-c">
+        <div style="width:66%" class="ui-block-a">
+          <input type="text">
+        </div>
+        <div style="text-align:center" class="ui-block-b"><a href="#" data-role="button" data-icon="plus" data-inline="true">Add</a></div>
+      </div>
       <!-- footer-->
             <div data-role="footer" class="footer">
               <div data-role="navbar">
                 <ul>
-                  <li><a href="/plan.html" data-icon="custom" class="plan">Plan</a></li>
-                  <li><a href="/go ui-btn-active.html" data-icon="custom" class="go ui-btn-active">Go</a></li>
-                  <li><a href="/search.html" data-icon="custom" class="search">Search</a></li>
-                  <li><a href="/friends.html" data-icon="custom" class="friends">Friends</a></li>
+                  <li><a href="plan.html" data-icon="custom" class="plan">Plan</a></li>
+                  <li><a href="go.html" data-icon="custom" class="go ui-btn-active">Go</a></li>
+                  <li><a href="search.html" data-icon="custom" class="search">Search</a></li>
+                  <li><a href="friends.html" data-icon="custom" class="friends">Friends</a></li>
                 </ul>
               </div>
             </div>
