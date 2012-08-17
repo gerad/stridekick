@@ -2,19 +2,16 @@ extends layout
 
 block header
   a(href="index.html", data-icon="back", data-direction="reverse", data-rel="back") Today
-  h1 Suggested Workouts
+  h1 Search
 
 block content
-  h1 Suggested Routes
-  h3 for your 5 mile run at 7:30 pace.
-
-  ul(data-role="listview")
+  ul(data-role="listview", data-filter="true")
     li(data-role="list-divider") On Your Own
-    li: a(href="routes.html")
+    li: a(href="#")
       img(src="http://maps.googleapis.com/maps/api/staticmap?center=3000+Sand+Hill,Menlo+Park,CA&zoom=13&size=115x115&maptype=roadmap&sensor=false")
       h4 Wunderlich Loop
       p 5 miles, 10 minutes away.
-    li: a(href="routes.html")
+    li: a(href="#")
       img(src="http://maps.googleapis.com/maps/api/staticmap?center=3000+Sand+Hill,Menlo+Park,CA&zoom=13&size=115x115&maptype=roadmap&sensor=false")
       h4 Cañada Trail
       p 5 miles, 10 minutes away.
@@ -25,9 +22,6 @@ block content
     li: a(href="#")
       h3 Woodside Loop with Gerad
       p Free. Trail Run. Starts at 6:30pm (in 3hrs). 10 miles away.
-
-  a(href="go.html", data-role="button", data-theme="b")
-    | Back to Today's Workout
 
 block footer
   mixin footer("go")
