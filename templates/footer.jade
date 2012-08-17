@@ -5,8 +5,8 @@ mixin footer(active)
       ul
         - var buttons = 'Plan Go Search Friends'.split(/\s+/)
         each button in buttons
-          - var className = button.toLowerCase();
+          - var name = button.toLowerCase(), className = name;
           - if (className === active) {
           -   className = className + ' ui-btn-active'
           - }
-          li: a(href=className + '.html', class=className, data-icon="custom")= button
+          li: a(href=name + '.html', class=className, data-icon="custom")= button
