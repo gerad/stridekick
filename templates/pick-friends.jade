@@ -6,9 +6,6 @@ block header
   a(href="planned.html") Done
 
 block content
-  style
-    .ui-listview-filter { margin: 0 }
-
   ul(data-role="listview", data-filter="true", data-autodividers="true")
     each friend in page.metadata.friends
       li= friend
