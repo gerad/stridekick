@@ -5,40 +5,39 @@ block header
   a.ui-btn-right(href="pick-plan.html", data-icon="gear") Change
 
 block content
-  div(data-role="collapsible", data-theme="e", data-content-theme="c")
-    h3 You haven&rsquo;t picked a plan.
-    p This plan,
-      b Basic Training
-      | , is the default plan. Click 
-      a(href="pick-plan.html") change
-      |  (above) to choose a different plan.
-
-  div(data-role="controlgroup", data-type="horizontal", style="margin-left:25%")
-    a.ui-btn-active(href="plan.html", data-role="button", data-mini="true") Current
-    a(href="#", data-role="button", data-mini="true") Calendar
+  h1 90% Complete
+  h2 1 Week Left
 
   ul.plan(data-role="listview")
-    li(data-role="list-divider") Last Week
-    li: a(href="go.html")
-      span.green &#x2713;
-      |  20 Minute Walk
-    li: a(href="go.html")
-      span.red &#x2717;
-      |  30 Minute Jog
-    li(data-role="list-divider") Yesterday
-    li: a(href="go.html")
-      span.gray ?
-      |  Hill Run
     li(data-role="list-divider") Today
     li.current: a(href="go.html")
       h1 Tempo Run
       p
         a(href="completed.html", data-role="button", data-inline="true", data-mini="true", data-theme="b") Finish
         a(href="nogo.html", data-role="button", data-inline="true", data-mini="true") Skip
+    li(data-role="list-divider") Recent
+    li: a(href="go.html")
+      span.green &#x2713;
+      |  20 Minute Walk
+    li: a(href="go.html")
+      span.red &#x2717;
+      |  30 Minute Jog
+    li: a(href="go.html")
+      span.gray ?
+      |  Hill Run
     li(data-role="list-divider") Upcoming
-    li: a(href="go.html") Long Run
-    li: a(href="go.html") Recovery Run
-    li: a(href="go.html") Speedwork
+    li: a(href="go.html")
+      h3 Long Run
+      p Monday
+    li: a(href="go.html")
+      h3 Recovery Run
+      p Wenesday
+    li: a(href="go.html")
+      h3 Speedwork
+      p Friday
+
+  p
+    a(href="#") See the full calendar &raquo;
 
 block footer
   mixin footer("plan")
