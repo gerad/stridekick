@@ -105,6 +105,17 @@ ul.plan .green, .red, .gray {
 .footer .alerts .ui-icon {
   background-image: url(../glyphish/icons/85-trophy-inverted.png);
 }
+.footer .alerts .ui-btn-text:after {
+  content: "1";
+  background-color: hsla(0, 95%, 45%, 0.75);
+  border-radius: 20px;
+  padding: 3px 6px;
+  font-size: xx-small;
+  position: absolute;
+  left: 35px;
+  top: -5px;
+}
+
 
 /* Red button theme for JQuery Mobile
  * - Use data-theme="r" for red versions of the default JQuery Mobile Buttons.

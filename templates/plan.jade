@@ -1,6 +1,7 @@
 extends layout
 
 block header
+  a(href="welcome.html", data-icon="home", data-iconpos="notext", data-role="button")
   h1 Basic Training
   a.ui-btn-right(href="pick-plan.html", data-icon="gear") Change
 
@@ -9,13 +10,13 @@ block content
   h2 1 Week Left
 
   ul.plan(data-role="listview")
-    li(data-role="list-divider") Today's Workout
+    li(data-role="list-divider") Today's Activity
     li.current: a(href="go.html")
       h1 Tempo Run
       p
         a(href="completed.html", data-role="button", data-inline="true", data-mini="true", data-theme="b") Finish
         a(href="nogo.html", data-role="button", data-inline="true", data-mini="true") Skip
-    li(data-role="list-divider") Recent
+    li(data-role="list-divider") Recent Activities
     li: a(href="go.html")
       span.green &#x2713;
       |  20 Minute Walk
@@ -25,7 +26,7 @@ block content
     li: a(href="go.html")
       span.gray ?
       |  Hill Run
-    li(data-role="list-divider") Upcoming
+    li(data-role="list-divider") Upcoming Activities
     li: a(href="go.html")
       h3 Long Run
       p Monday
