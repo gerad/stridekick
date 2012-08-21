@@ -91,6 +91,9 @@ ul.plan .green, .red, .gray {
 .footer .alerts.ui-btn-active .ui-icon {
   background-image: url(../glyphish/icons/85-trophy.png);
 }
+.footer .alerts.ui-btn-active .ui-btn-text:after {
+  display: none;
+}
 
 /* inactive icons */
 .footer .plan .ui-icon {
