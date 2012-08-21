@@ -1,29 +1,35 @@
 extends layout
 
 block header
-  a(href="plan.html", data-icon="back", data-direction="reverse") Plan
-  h1 Pick a Plan
+  a(href="welcome.html", data-icon="back", data-direction="reverse") Back
+  h1 Set a Goal
 
 block content
-  h3 What&rsquo;s your goal?
+  h3 What do you want to do?
   ul(data-role="listview")
-    li Getting in Shape
+    li Get in Shape
       ul
         li: a(href="customize-plan.html") Mile Challenge
         li: a(href="customize-plan.html") Couch to 5k
         li: a(href="customize-plan.html") Power Weight Loss
-    li Staying Fit
+    li Keep Fit
       ul
         li: a(href="customize-plan.html") Mind Body Health
         li: a(href="customize-plan.html") Bootcamp Basics
         li: a(href="customize-plan.html") Power Weight Loss
-    li Competing in a Race
+    li Run a Race
       ul(data-role="listview", data-filter="true")
-        li: a(href="customize-plan.html") NorthFace Endurance Challenge
-        li: a(href="customize-plan.html") California International Marathon
+        li(data-role="list-divider") November
         li: a(href="customize-plan.html") US Half Marathon
-        li: a(href="customize-plan.html") Lake Tahoe Ironman
+        li(data-role="list-divider") December
+        li: a(href="customize-plan.html") California International Marathon
+        li: a(href="customize-plan.html") NorthFace Endurance Challenge
+        li(data-role="list-divider") August &lsquo;13
         li: a(href="customize-plan.html") Lake Tahoe Triathlon
+        li(data-role="list-divider") September &lsquo;13
+        li: a(href="customize-plan.html") Lake Tahoe Ironman
+        li(data-role="list-divider") Other
+        li Something missing? Add it.
 
 block footer
   mixin footer("plan")

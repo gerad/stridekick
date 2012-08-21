@@ -2,31 +2,68 @@ extends layout
 
 block header
   a(href="pick-plan.html", data-icon="back", data-direction="reverse") Back
-  h1 Customize Plan
+  h1 Your New Plan
 
 block content
-  h3 Northface Endurance Challenge Plan
+  .ui-grid-a
+    .ui-block-a
+      - var day = 1, weekdays = 'Su Mo Tu We Th Fr Sa'.split(/\s+/);
+      - var workouts = { Tu: 'tempo', Th: 'speed', Sa: 'long' };
+      - var weeks = new Array(15);
+      - var months = 'September October November'.split(/\s+/);
+      style
+        .calendar { border-collapse: collapse; }
+        .calendar td { text-align: center; vertical-align: top; }
+        .calendar td, th { font-size: small; padding: 2px; }
+        .calendar tr.current td { background-color: #CCC; }
+        .calendar .dot { line-height: 0; }
+        .dot.tempo { color: forestgreen; }
+        .dot.speed { color: firebrick; }
+        .dot.long { color: blue; }
+      table.calendar
+        tr
+          each weekday in weekdays
+            th= weekday
+        each week in weeks
+          if (day + 7) % 30 < 7
+            tr
+              th(colspan=7)= months[Math.floor(day / 30)]
+          tr(class=(day < 7 ? 'current' : false))
+            each weekday in weekdays
+              - day++;
+              if day < 15 * 7 + 1
+                td
+                  span.day= day % 30 + 1
+                  if workouts[weekday]
+                    .dot(class=workouts[weekday]) &bull;
+              else
+                td(style="color:gold") &#x2605;
+    .ui-block-b
+      h4 August 3-9
+      p
+        span.dot.tempo &bull;
+        b  Tue
+        |  - Tempo Run
+      p
+        span.dot.speed &bull;
+        b  Thu
+        |  - Speed Work
+      p
+        span.dot.long &bull;
+        b  Sat
+        |  - Long Run
+      a(href="#", data-role="button", data-mini="true") August 10-16 &raquo;
+
+      p(style="margin-top:12.25em;font-size:small;font-weight:bold") Northface Endurance Challenge
+
+  .r
 
   form
     fieldset(data-role="fieldcontain")
-      label(for="distance") Distance
-      select(name="distance", id="distance")
-        option 5k
-        option 10K
-        option Half Marathon
-        option Marathon
-        option 50K
-        option 50 Mile
-
-    fieldset(data-role="fieldcontain")
-      label(for="pace") Goal Pace
-      input(type="range", name="pace", id="pace", data-highlight="true", min="4", value="10", max="30")
-
-    fieldset(data-role="fieldcontain")
       label
         input(type="checkbox", name="share", checked="checked")
-        | Share you're following this plan with your friends, so they can
-        | support you (and maybe even join some workouts)!.
+        | Share your plan with friends, so they can support you (and maybe
+        | even join in)!
 
     a(href="pick-friends.html", data-role="button", data-theme="b") Let&rsquo;s Do It
 
