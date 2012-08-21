@@ -7,7 +7,7 @@ ul {
 }
 
 
-h3 a.change {
+a.change {
   font-size: small;
 }
 
@@ -79,25 +79,31 @@ ul.plan .green, .red, .gray {
 }
 
 /* active icons */
-.footer .go.ui-btn-active .ui-icon {
-  background-image: url(../glyphish/icons/78-stopwatch.png);
-}
-.footer .search.ui-btn-active .ui-icon {
-  background-image: url(../glyphish/icons/73-radar.png);
-}
 .footer .plan.ui-btn-active .ui-icon {
   background-image: url(../glyphish/icons/103-map.png);
 }
+.footer .activities.ui-btn-active .ui-icon {
+  background-image: url(../glyphish/icons/73-radar.png);
+}
+.footer .friends.ui-btn-active .ui-icon {
+  background-image: url(../glyphish/icons/112-group.png);
+}
+.footer .alerts.ui-btn-active .ui-icon {
+  background-image: url(../glyphish/icons/85-trophy.png);
+}
 
 /* inactive icons */
-.footer .go .ui-icon {
-  background-image: url(../glyphish/icons/78-stopwatch-inverted.png);
-}
-.footer .search .ui-icon {
-  background-image: url(../glyphish/icons/73-radar-inverted.png);
-}
 .footer .plan .ui-icon {
   background-image: url(../glyphish/icons/103-map-inverted.png);
+}
+.footer .activities .ui-icon {
+  background-image: url(../glyphish/icons/73-radar-inverted.png);
+}
+.footer .friends .ui-icon {
+  background-image: url(../glyphish/icons/112-group-inverted.png);
+}
+.footer .alerts .ui-icon {
+  background-image: url(../glyphish/icons/85-trophy-inverted.png);
 }
 
 /* Red button theme for JQuery Mobile
