@@ -1,0 +1,11 @@
+extends layout
+
+block header
+  a(href="#", data-icon="back", data-direction="reverse", data-rel="back") Plan
+  h1 Calendar
+
+block content
+  include calendar-widget
+
+block footer
+  mixin footer("plan")
