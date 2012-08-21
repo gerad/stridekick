@@ -1,0 +1,26 @@
+extends layout
+
+block header
+
+block content
+  h1 Welcome to Stridekick!
+
+  :markdown
+    Stridekick makes it easy to **get and keep fit.**
+
+    With Stridekick you can:
+
+    * Find **fun, social workouts.**
+    * Get a plan to **achieve your goals.**
+    * Have friends **hold you accountable.**
+
+  p(style="text-align:center")
+    a(href="pick-plan.html", data-role="button", data-theme="b") Set a Goal Now
+    | to get a personalized training plan
+
+  h2 Or go without a plan&hellip;
+  ul(data-role="listview")
+    include activity-list
+
+block footer
+  mixin footer("plan")
