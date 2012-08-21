@@ -19,7 +19,7 @@
       <!-- content-->
       <fieldset data-role="fieldcontain">
         <label for="difficulty">How&rsquo;d it Go?</label>
-        <input id="difficulty" type="range" min="0" max="100" value="50">
+        <input id="difficulty" type="range" min="0" max="100" value="50" data-theme="b">
         <div class="ui-grid-b range-legend">
           <div class="ui-block-a">Super Hard!</div>
           <div class="ui-block-b">About Average</div>
@@ -27,18 +27,27 @@
         </div>
       </fieldset>
       <fieldset data-role="fieldcontain">
-        <label>
-          <input type="checkbox" name="short">I had to cut it short.
-        </label><!--
-        <label for="duration">No worries! How long did you exercise?</label>
-        <select>
-          <option>< 5 minutes</option>
-          <option>5-15 minutes</option>
-          <option>15-30 minutes</option>
-          <option>30-45 minutes</option>
-          <option>45+ minutes</option>
-        </select>-->
+        <label for="short">
+          <input id="short" type="checkbox" name="short">I had to cut it short.
+        </label>
+        <div class="duration">
+          <label for="duration">No worries! How long did you exercise?</label>
+          <select id="duration">
+            <option>< 5 minutes</option>
+            <option>5-15 minutes</option>
+            <option>15-30 minutes</option>
+            <option>30-45 minutes</option>
+            <option>45+ minutes</option>
+          </select>
+        </div>
       </fieldset>
+      <script>
+        $('.duration').hide();
+        $('#short').change(function() {
+          $('.duration').toggle($(this).prop('checked'))
+        });
+        
+      </script>
       <fieldset data-role="fieldcontain">
         <label for="notes">Notes (optional):</label>
         <textarea id="notes"></textarea>
