@@ -2,12 +2,12 @@ extends layout
 
 block header
   a(href="welcome.html", data-icon="home", data-iconpos="notext", data-role="button")
-  h1 Basic Training
-  a.ui-btn-right(href="pick-plan.html", data-icon="gear") Change
+  h1 Training Plan
 
 block content
-  h1 90% Complete
-  h2 1 Week Left
+  h1 Northface Challenge Plan 
+    a.change(href="pick-plan.html") change &raquo;
+  h2 90% Complete; 1 Week Left
 
   ul.plan(data-role="listview")
     li(data-role="list-divider") Today's Activity
@@ -26,6 +26,16 @@ block content
     li: a(href="go.html")
       span.gray ?
       |  Hill Run
+    li(data-role="list-divider") Previous Activities
+    li: a(href="calendar.html")
+      for x in new Array(20)
+        - var rand = Math.random()
+        if rand < 0.88
+          span.green &#x2713;
+        else if rand < 0.95
+          span.red &#x2717;
+        else
+          span.gray ?
     li(data-role="list-divider") Upcoming Activities
     li: a(href="go.html")
       h3 Long Run

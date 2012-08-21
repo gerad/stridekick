@@ -1,5 +1,6 @@
 h1, h2, h3, h4, h5 {
   margin-bottom: 0.25em;
+  margin-top: 0.5em;
 }
 
 ul {
@@ -52,8 +53,8 @@ ul.plan .current .ui-btn-inner {
 ul.plan .green { color: forestgreen; }
 ul.plan .red { color: firebrick; }
 ul.plan .gray { color: gray; }
-ul.plan .green, .red, .gray {
-  font-size: x-large;
+ul.plan .green, ul.plan .red, ul.plan .gray {
+  font-size: large;
   line-height: large;
   display: inline-block;
 }
