@@ -6,9 +6,11 @@ block header
   a(href="plan.html") Done
 
 block content
-  ul(data-role="listview", data-filter="true", data-autodividers="true")
+  ul.friends(data-role="listview", data-filter="true", data-autodividers="true")
     each friend in page.metadata.friends
-      li= friend
+      li
+        = friend
+        label: input(type="checkbox", data-inline="true")
 
 block footer
   mixin footer("friends")
