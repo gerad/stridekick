@@ -5,9 +5,14 @@ block header
   h1 Training Plan
 
 block content
-  h1 Northface Challenge Plan 
+  h3
+    span(style="color:gold") &#x2605;
+    |  Goal: Northface Challenge 
     a.change(href="pick-plan.html") change &raquo;
-  h2 90% Complete; 1 Week Left
+    .bar(style="border:1px solid #999;width:80%;margin:auto;")
+      .inner(style="background-color:#5E87B0;background-image:-webkit-linear-gradient(#6FACD5, #497BAE);width:90%") &nbsp;
+    .note(style="text-align:center;font-size:x-small;font-style:italic")
+      | 90% Complete; 1 Week Left
 
   ul.plan(data-role="listview")
     li(data-role="list-divider") Today's Activity
