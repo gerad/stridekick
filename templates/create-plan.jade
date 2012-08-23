@@ -1,0 +1,33 @@
+table.calendar
+  tr
+    th #
+    each weekday in weekdays
+      th= weekday
+  each week in weeks
+    if week.month
+      tr
+        th(colspan=8)= week.month
+
+    tr
+      th= week.num
+      each day in week.days
+        td(class=day.cssClass)= day.date
+
+form
+  p
+    label(for="date") Date
+    input#date(type="date", value=today.rfc3339String())
+
+  p
+    label(for="name") Name
+    input#name(type="text")
+
+  p
+    label(for="distance") Distance
+    input#distance(type="text")
+
+  p
+    label(for="notes") Notes
+    textarea#notes
+
+button Save

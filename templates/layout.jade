@@ -1,0 +1,16 @@
+!!! 5
+html(lang='en')
+  head
+    block head
+      meta(charset='utf-8')
+      title
+        block title
+          = locals.name
+      link(rel='stylesheet', href='css/layout.css')
+      - pagename = page.filename.split('.')[0]
+      if contents.css[pagename + '.styl']
+        link(rel='stylesheet', href="css/#{pagename}.css")
+      script(src='http://code.jquery.com/jquery-1.7.2.min.js')
+  body
+    block content
+      TBD
