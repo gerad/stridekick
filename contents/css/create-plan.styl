@@ -1,0 +1,31 @@
+body.create-plan
+  table#calendar
+    margin-right 1em
+    float left
+    border-collapse separate
+    td
+      border 1px solid transparent
+      cursor pointer
+      .day
+        text-align right
+    td.current
+      border-color black
+
+  form#workout
+    float left
+    label
+      display block
+
+    p.repeat
+      span.summary
+        margin-left 1ex
+    p.repeat-options
+      display none
+      font-size small
+      margin-top -1em
+      label
+        display inline
+      label[for=repeat-kind]
+        display none
+      span.monthly
+        display none

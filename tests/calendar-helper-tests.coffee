@@ -1,6 +1,6 @@
 assert = require 'assert'
-calendar = require '../../helpers/calendar-helper'
-Day = require '../../models/calendar/day'
+calendar = require '../helpers/calendar-helper'
+Day = require '../models/calendar/day'
 
 assert calendar, 'function exists'
 
@@ -13,12 +13,12 @@ assert ret.weekdays.length is 7, 'calendar has 7 weekdays'
 assert ret.weeks.length is 15, 'object has 15 weeks'
 
 firstWeek = ret.weeks[0]
-assert firstWeek.num is 1, 'first week is #1'
+assert firstWeek.num is 15, 'first week is #15'
 assert not firstWeek.month?, 'first week has no month'
 assert firstWeek.days.length is 7, 'first week has 7 days'
 
 lastWeek = ret.weeks[14]
-assert lastWeek.num is 15, 'last week is #15'
+assert lastWeek.num is 1, 'last week is #1'
 assert lastWeek.month is 'December', 'last week has "December" as a month'
 
 firstDay = firstWeek.days[0]

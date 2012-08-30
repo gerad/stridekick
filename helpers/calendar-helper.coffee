@@ -17,10 +17,11 @@ calendar = (goalDay, startDay=new Day) ->
 
     # add the array of weeks
     currentMonth = startWeek.monthOfYear()
-    ret.weeks = for week, num in Week.range(startWeek, endWeek)
+    weeks = Week.range(startWeek, endWeek)
+    ret.weeks = for week, num in weeks
       build (ret) ->
         # add the week number
-        ret.num = num + 1
+        ret.num = weeks.length - num
 
         # add month for the week, if the month has changed
         if week.monthOfYear() isnt currentMonth
@@ -36,6 +37,7 @@ calendar = (goalDay, startDay=new Day) ->
                 'current'
               else
                 false
+            ret.rfc3339 = day.rfc3339String()
             ret.date = day.dayOfMonth()
 
 module.exports = calendar

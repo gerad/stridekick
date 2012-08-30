@@ -1,5 +1,5 @@
 assert = require 'assert'
-Day = require '../../../models/calendar/day'
+Day = require '../models/calendar/day'
 
 assert Day, 'Day is defined'
 

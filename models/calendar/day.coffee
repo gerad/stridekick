@@ -19,13 +19,18 @@ class Day
   # `next` returns the next day in the calendar
   next: -> @add(1)
 
+  # `daysUntil` returns the number of days until the passed `other` day. It
+  # expects `other` to be after the current day.
   daysUntil: (other) ->
     dayLength = 24 * 60 * 60 * 1000
     Math.round((other.date - @date) / dayLength)
 
+  # `daysSince` returns the number of since until the passed `other` day. It
+  # expects `other` to be before the current day.
   daysSince: (other) ->
     -@daysUntil(other)
 
+  # `equals` returns true if the `other` day is the same day as this day.
   equals: (other) ->
     @daysUntil(other) is 0
 
@@ -34,6 +39,9 @@ class Day
 
   isTomorrow: ->
     @equals((new Day).add(1))
+
+  isYesterday: ->
+    @equals((new Day).subtract(1))
 
   # `dayOfWeek` returns the day # of the week (0-6) for this day
   dayOfWeek: ->
