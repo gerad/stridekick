@@ -17,8 +17,17 @@ class WorkoutFormView extends Backbone.View
 
   # ## events
 
+  # `changeDay` changes the day of the workout indirectly.
+  #
+  # It begins by changing the day of the plan, which then triggers
+  # `currentDayBinding`, which saves the current workout before reloading the
+  # new workout for the day. However, since we changed the workout date, the
+  # workout that is saved is the same one that gets reloaded.
   changeDay: (e) ->
     day = $(e.target).val()
+    # Remove the workout from its collection. It will get added again, at the
+    # correct date, in `currentDayBinding`.
+    @workout.remove()
     @plan.set currentDay: day
 
   changeRepeat: (e) ->

@@ -29,6 +29,9 @@ class Workout extends Backbone.Model
     @clear silent: true
     @set attributes
 
+  remove: ->
+    @collection.remove(@)
+
 class Workout.Collection extends Backbone.Collection
   model: Workout
   getOrAdd: (day) ->
