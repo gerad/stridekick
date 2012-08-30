@@ -2,7 +2,7 @@ summarizeRepeat = require './lib/summarize-repeat'
 
 class WorkoutFormView extends Backbone.View
   events:
-    'change input#date': 'changeDate'
+    'change input#day': 'changeDay'
     'change input#repeat': 'changeRepeat'
     'change select#repeat-kind': 'changeRepeatKind'
     'change input.repeat-on': 'changeRepeatOn'
@@ -17,7 +17,7 @@ class WorkoutFormView extends Backbone.View
 
   # ## events
 
-  changeDate: (e) ->
+  changeDay: (e) ->
     day = $(e.target).val()
     @plan.set currentDay: day
 
