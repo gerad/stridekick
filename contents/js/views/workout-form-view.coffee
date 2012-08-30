@@ -53,7 +53,7 @@ class WorkoutFormView extends Backbone.View
     kind = $(e.target).val()
     if kind is 'add'
       # TODO stop using javascript prompts to add new kinds
-      # TODO stop saving state (the added kind) in the DOM
+      # TODO stop saving state (the added `kind`) in the DOM
       if (toAdd = prompt("What kind of run do you want to add?"))?
         @$('select#kind .separator').before($('<option>', text: toAdd))
         kind = toAdd
