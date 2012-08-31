@@ -1,15 +1,48 @@
 body.create-plan
   table#calendar
-    margin-right 1em
     float left
-    border-collapse separate
+    margin-right 1em
+    table-layout fixed
+
+    // widths
+    th:first-child
+      width 25px
+    th, td
+      width 80px
+      h3, p
+        width 76px
+
+    // heights
     td
-      border 1px solid transparent
+      height 80px
+
+    // borders
+    td
+      border solid #AAA
+      border-width 1px 0 0 1px
+    tr.week
+      border-right 1px solid #AAA
+    tr.month th:last-child
+      border-top 1px solid #AAA
+    td.current
+      border 1px solid black
+
+    // formatting
+    td
+      vertical-align top
       cursor pointer
       .day
         text-align right
-    td.current
-      border-color black
+        font-size small
+      h3, p
+        margin 0
+        padding 0
+        font-size small
+        overflow hidden
+        text-overflow ellipsis
+        text-align center
+      p
+        height 2.5em
 
   form#workout
     float left

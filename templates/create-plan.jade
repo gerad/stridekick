@@ -7,10 +7,10 @@ block content
         th= weekday
     each week in weeks
       if week.month
-        tr
-          th(colspan=8)= week.month
-
-      tr
+        tr.month
+          th
+          th(colspan=7)= week.month
+      tr.week
         th= week.num
         each day in week.days
           td(class=day.cssClass, data-day=day.rfc3339)
