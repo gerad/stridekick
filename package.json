@@ -7,12 +7,13 @@
     "wintersmith": "~1.1.1",
     "wintersmith-stylus": "~0.1.2",
     "wintersmith-coffee": "~0.1.2",
-    "wintersmith-browserify": "~0.1.0"
+    "browserify": "~1.15.4",
+    "jade": "~0.27.2"
   },
   "devDependencies": {},
   "scripts": {
     "start": "wintersmith preview",
-    "test": "find tests -name '*.coffee' | xargs coffee "
+    "test": "find tests -name '*.coffee' | xargs coffee"
   },
   "repository": {
     "type": "git",

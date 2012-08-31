@@ -8,8 +8,8 @@
   },
   "plugins": [
     "./node_modules/wintersmith-stylus/",
-    "./node_modules/wintersmith-browserify/",
     "./node_modules/wintersmith-coffee/",
-    "./plugins/wintersmith-coffee-locals"
+    "./plugins/wintersmith-coffee-locals",
+    "./plugins/wintersmith-browserify"
   ]
 }

@@ -1,5 +1,3 @@
-Workout = require '../workout'
-
 class Workout extends Backbone.Model
   idAttribute: 'day'
   defaults:
@@ -31,6 +29,9 @@ class Workout extends Backbone.Model
 
   remove: ->
     @collection.remove(@)
+
+  pick: (attributes...) ->
+    _.pick @attributes, attributes...
 
 class Workout.Collection extends Backbone.Collection
   model: Workout

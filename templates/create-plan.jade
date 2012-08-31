@@ -14,7 +14,7 @@ block content
         th= week.num
         each day in week.days
           td(class=day.cssClass, data-day=day.rfc3339)
-            .day= day.date
+            include calendar-widget-day
 
   form#workout
     p.day
