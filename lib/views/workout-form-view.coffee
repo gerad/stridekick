@@ -12,26 +12,28 @@ class WorkoutFormView extends Backbone.View
 
   # ## lifecycle
   initialize: ->
-    @plan = @model
-    @hide() # the form is hidden by default
+    @workout = @model
 
-  # `show` is called when the workout form should be shown. It displays the
-  # form with the current workout for the day.
-  show: ->
-    @delegateEvents()
-    @setWorkout @plan.currentWorkout()
+    @workout.on 'change:kind', @kindBinding, @
+    @workout.on 'change:repeat', @repeatBinding, @
+    @workout.on 'change:repeat_kind', @repeatKindBinding, @
+    @workout.on 'change', @repeatSummaryBinding, @
+
     @setupForm()
     @$el.show()
 
-  # `hide` is called when the workout form should be hidden. It saves the
-  # current workout in the form before hiding itself.
-  hide: ->
-    @undelegateEvents()
-    if @workout?
-      @plan.saveWorkout(@workoutize(@serialize()))
-      @clearWorkout()
-    @$el.hide()
+  save: ->
+    # save the form attributes to the workout
+    # @workout.reset(@workoutize(@serialize()))
 
+  destroy: ->
+    # unbind listeners on the current workout
+    @model.off null, null, @
+
+    # have the view stop listening to events
+    @undelegateEvents()
+
+    @$el.hide()
 
   # ## events
 
@@ -142,7 +144,6 @@ class WorkoutFormView extends Backbone.View
   setupForm: ->
     # reset the form to its default values
     @$el.reset()
-    @$('input#day').focus()
 
     # update the form to match the new workout
     attributes = @workout.toJSON()
@@ -165,32 +166,6 @@ class WorkoutFormView extends Backbone.View
 
     # handle the remaining attributes in bulk
     @deserialize attributes
-
-  # `setupWorkout` sets up the view to work with a new workout. It:
-  #
-  # 1. unbinds all the listeners on the existing `@workout`
-  # 2. stores the passed `workout` as the new `@workout`
-  # 3. adds listeners on the new workout
-  setWorkout: (workout) ->
-    @clearWorkout() # clear the current workout if there is one
-
-    # save the new workout
-    @workout = workout
-
-    # add new events
-    @workout.on 'change:kind', @kindBinding, @
-    @workout.on 'change:repeat', @repeatBinding, @
-    @workout.on 'change:repeat_kind', @repeatKindBinding, @
-    @workout.on 'change', @repeatSummaryBinding, @
-
-    @deserialize @workout.toJSON()
-
-  # `clearWorkout` removes event listeners from `@workout@ and sets it to null
-  clearWorkout: ->
-    if @workout?
-      # unbind listeners on the current workout
-      @workout.off null, null, @
-      @workout = null
 
   # `workoutize` takes the object from the serialized form and converts it
   # into the format that the model expects

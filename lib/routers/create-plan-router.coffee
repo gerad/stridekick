@@ -6,32 +6,42 @@ Day = require('../models/day')
 
 class CreatePlanRouter extends Backbone.Router
   routes:
-    ':day/add' : 'add'
-    ':day'     : 'show'
+    ':day': 'show'
 
   # ## lifecycle
 
   initialize: ->
-    @plan = new Plan(currentDay: (new Day).rfc3339String())
+    @plan = new Plan(current_day: (new Day).rfc3339String())
     @calendarView = new CalendarView(el: $('table#calendar'), model: @plan)
-    @formView = new WorkoutFormView(el: $('form#workout'), model: @plan)
-    @addView = new WorkoutAddView(el: $('#add-workout'), model: @plan)
 
-    @plan.on 'change:currentDay', (plan, day, options) =>
-      @navigate day, trigger: true
-
-    @plan.workouts.on 'add', =>
-      @navigate "#{@plan.currentDay()}/add", trigger: true
+    @plan.on 'change:current_day', @currentDayBinding, @
+    @plan.on 'workouts:add', @addWorkoutBinding, @
 
   # ## routes
   show: (day) ->
-    @plan.set(currentDay: day)
-    @addView.show()
-    @formView.hide()
+    @plan.set(current_day: day)
+    @renderWorkout()
 
-  add: (day) ->
-    @plan.set(currentDay: day)
-    @addView.hide()
-    @formView.show()
+  # ## renders
+  renderWorkout: ->
+    @workoutView?.destroy()
+    @workoutView = if (workout = @plan.currentWorkout())?
+        new WorkoutFormView(el: $('form#workout'), model: workout)
+      else
+        new WorkoutAddView(el: $('#add-workout'), model: @plan)
+
+  # ## bindings
+
+  # `currentDayBinding` is called when the plan's `current_day` changes. It
+  # triggers the `show` route for the new day.
+  currentDayBinding: (plan, day, options) ->
+    @navigate(day, trigger: true)
+
+  # `addWorkoutBinding` is called whenever a workout is added. It re-renders
+  # the workout for the current day if the workout was added to the current
+  # day.
+  addWorkoutBinding: (workout, workouts, options) ->
+    if workout.get('day') is @plan.get('current_day')
+      @renderWorkout()
 
 module.exports = CreatePlanRouter

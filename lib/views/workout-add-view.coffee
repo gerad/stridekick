@@ -7,23 +7,24 @@ class WorkoutAddView extends Backbone.View
   # ## lifecycle
   initialize: ->
     @plan = @model
-    @plan.on 'change:currentDay', @currentDayBinding, @
 
-  hide: ->
-    @$el.hide()
-
-  show: ->
+    day = new Day(@plan.get('current_day'))
+    @$('h3').text(day.localeString())
     @$el.show()
+
+  destroy: ->
+    # unbind listeners on the current workout
+    @model.off null, null, @
+
+    # have the view stop listening to events
+    @undelegateEvents()
+
+    @$el.hide()
 
   # ## events
 
   # `clickAdd` adds a workout to the plan at the plan's `currentDay`
   clickAdd: ->
     @plan.addWorkout()
-
-  # ## bindings
-  currentDayBinding: ->
-    day = new Day(@plan.currentDay())
-    @$('h3').text(day.localeString())
 
 module.exports = WorkoutAddView

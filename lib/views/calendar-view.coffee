@@ -8,19 +8,16 @@ class CalendarView extends Backbone.View
   # ## lifecycle
   initialize: ->
     @plan = @model
-    @plan.on 'change:currentDay', @currentDayBinding, @
-
-    # TODO remove the nested dependency?
-    @plan.workouts.on 'add remove change', @workoutBinding, @
+    @plan.on 'change:current_day', @currentDayBinding, @
+    @plan.on 'workouts:add workouts:remove workouts:change', @workoutBinding, @
 
     $(document).keylisten @keylisten
-
 
   # ## events
   clickTd: (e) ->
     e.preventDefault()
     day = $(e.target).closest('td').data('day')
-    @plan.set currentDay: day
+    @plan.set current_day: day
 
   # ## bindings
   currentDayBinding: (plan, day, options) ->
@@ -33,12 +30,16 @@ class CalendarView extends Backbone.View
     # update the calendar day for the workout
     @renderDay(day)
 
+    previousDay = workout.previous('day')
+    if previousDay? and day isnt previousDay
+      @renderDay(previousDay)
+
   keylisten: (e) =>
     switch e.keyName
       when 'left', 'right', 'up', 'down'
         e.preventDefault() # prevent scrolling
 
-        day = new Day(@plan.currentDay())
+        day = new Day(@plan.get('current_day'))
         newDay = switch e.keyName
           when 'left'
             day.previous()
@@ -49,7 +50,7 @@ class CalendarView extends Backbone.View
           when 'down'
             day.nextWeek()
 
-        @plan.set(currentDay: newDay.rfc3339String())
+        @plan.set(current_day: newDay.rfc3339String())
 
       when 'backspace'
         if (workout = @plan.currentWorkout())?
