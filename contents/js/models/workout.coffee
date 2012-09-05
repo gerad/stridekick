@@ -17,7 +17,7 @@ class Workout extends Backbone.Model
     ymd = @get('day').split('-')
     new Date(+ymd[0], +ymd[1] - 1, +ymd[2])
 
-  # `daysOfWeekToRepeatOn` returns an array of day of week numbers (0-6)
+  # `daysOfWeekToRepeatOn` returns an array of day of week integers (0-6)
   # corresponding to the `repeat_on` variable
   daysOfWeekToRepeatOn: ->
     for day in @get('repeat_on')
@@ -28,7 +28,7 @@ class Workout extends Backbone.Model
     @set attributes
 
   remove: ->
-    @collection.remove(@)
+    @collection?.remove(@)
 
   pick: (attributes...) ->
     _.pick @attributes, attributes...

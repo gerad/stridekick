@@ -16,6 +16,11 @@ block content
           td(class=day.cssClass, data-day=day.rfc3339)
             include calendar-widget-day
 
+  #add-workout
+    h3= today.localeString()
+    p No workout.
+      button.add Add
+
   form#workout
     p.day
       label(for="day") Date

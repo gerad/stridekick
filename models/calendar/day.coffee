@@ -1,6 +1,31 @@
+{ isString } = require '../../lib/utilities'
 class Day
-  constructor: (date=new Date) ->
-    @date = new Date(date.getFullYear(), date.getMonth(), date.getDate())
+  # `constructor` instantiates a new day. It can take a number of different
+  # arguments. The options are:
+  #
+  # 1. *no arguments* - initializes it to today
+  # 2. a `Date` - initializes it to the day of the `Date`
+  # 3. a `String` in RFC3339 format, like "2012-01-01"
+  # 4. a year, month and a day - note the month is (1-12) formatted
+  constructor: (args...) ->
+    switch args.length
+      when 1
+        if isString(args[0])
+          # 2012-01-01 string
+          [y, m, d] = (+x for x in args[0].split('-'))
+        else
+          # assume it is a `Date` object
+          date = args[0]
+      when 3
+        [y, m, d] = args
+      else
+        # no arguments, use today as the date
+        date = new Date()
+
+    if date
+      [y, m, d] = [date.getFullYear(), date.getMonth() + 1, date.getDate()]
+
+    @date = new Date(y, m - 1, d)
 
   # `clone` creates a copy of the day
   clone: -> new Day(@date)
@@ -18,6 +43,15 @@ class Day
 
   # `next` returns the next day in the calendar
   next: -> @add(1)
+
+  # `nextWeek` 7 days laster
+  nextWeek: -> @add(7)
+
+  # `previous` returns the previous day in the calendar
+  previous: -> @subtract(1)
+
+  # `previousWeek` 7 days earlier
+  previousWeek: -> @subtract(7)
 
   # `daysUntil` returns the number of days until the passed `other` day. It
   # expects `other` to be after the current day.
@@ -67,6 +101,9 @@ class Day
   # the date. This is useful for passing to html5 input[type=date] fields.
   rfc3339String: ->
     @date.toISOString().substr(0, 10)
+
+  localeString: ->
+    @date.toLocaleDateString()
 
 # `range` returns an array of days between the `start` date and the `end` date
 # (inclusive)

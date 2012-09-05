@@ -8,6 +8,12 @@ class Plan extends Backbone.Model
     workout = @workouts.getOrAdd(attributes.day)
     workout.reset attributes
 
+  workoutAtDay: (day) ->
+    @workouts.get(day)
+
+  addWorkout: ->
+    @currentWorkout()
+
   currentWorkout: ->
     @workouts.getOrAdd(@currentDay())
 

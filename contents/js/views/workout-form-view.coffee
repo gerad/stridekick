@@ -1,4 +1,5 @@
 summarizeRepeat = require './lib/summarize-repeat'
+Day = require '../../../models/calendar/day'
 
 class WorkoutFormView extends Backbone.View
   events:
@@ -12,23 +13,30 @@ class WorkoutFormView extends Backbone.View
   # ## lifecycle
   initialize: ->
     @plan = @model
-    @plan.on 'change:currentDay', @currentDayBinding, @
+    @hide() # the form is hidden by default
+
+  # `show` is called when the workout form should be shown. It displays the
+  # form with the current workout for the day.
+  show: ->
+    @delegateEvents()
+    @setWorkout @plan.currentWorkout()
     @setupForm()
+    @$el.show()
+
+  # `hide` is called when the workout form should be hidden. It saves the
+  # current workout in the form before hiding itself.
+  hide: ->
+    @undelegateEvents()
+    if @workout?
+      @plan.saveWorkout(@workoutize(@serialize()))
+      @clearWorkout()
+    @$el.hide()
+
 
   # ## events
 
-  # `changeDay` changes the day of the workout indirectly.
-  #
-  # It begins by changing the day of the plan, which then triggers
-  # `currentDayBinding`, which saves the current workout before reloading the
-  # new workout for the day. However, since we changed the workout date, the
-  # workout that is saved is the same one that gets reloaded.
   changeDay: (e) ->
-    day = $(e.target).val()
-    # Remove the workout from its collection. It will get added again, at the
-    # correct date, in `currentDayBinding`.
-    @workout.remove()
-    @plan.set currentDay: day
+    @workout.set day: @$('input#day').val()
 
   changeRepeat: (e) ->
     isRepeating = $(e.target).is(':checked')
@@ -68,18 +76,6 @@ class WorkoutFormView extends Backbone.View
 
 
   # ## bindings
-
-  # `currentDayBinding` is called when the day of the plan is changed. It:
-  #
-  # 1. saves the existing attributes for the workout
-  # 2. sets up the form for the new day's workout
-  currentDayBinding: ->
-    # save the existing workout
-    @plan.saveWorkout(@workoutize(@serialize()))
-
-    # setup the form for the new day's workout
-    @setupForm()
-
   kindBinding: ->
     @$('select#kind').val(@workout.get('kind'))
 
@@ -144,10 +140,9 @@ class WorkoutFormView extends Backbone.View
   # `setupForm` sets the views `@workout` to the `@plan.currentWorkout()` and
   # initializes the form based on the values of the `@workout`
   setupForm: ->
-    @setupWorkout(@plan.currentWorkout())
-
     # reset the form to its default values
     @$el.reset()
+    @$('input#day').focus()
 
     # update the form to match the new workout
     attributes = @workout.toJSON()
@@ -176,9 +171,8 @@ class WorkoutFormView extends Backbone.View
   # 1. unbinds all the listeners on the existing `@workout`
   # 2. stores the passed `workout` as the new `@workout`
   # 3. adds listeners on the new workout
-  setupWorkout: (workout) ->
-    # unbind listeners on the current workout
-    @workout.off null, null, @ if @workout?
+  setWorkout: (workout) ->
+    @clearWorkout() # clear the current workout if there is one
 
     # save the new workout
     @workout = workout
@@ -190,6 +184,13 @@ class WorkoutFormView extends Backbone.View
     @workout.on 'change', @repeatSummaryBinding, @
 
     @deserialize @workout.toJSON()
+
+  # `clearWorkout` removes event listeners from `@workout@ and sets it to null
+  clearWorkout: ->
+    if @workout?
+      # unbind listeners on the current workout
+      @workout.off null, null, @
+      @workout = null
 
   # `workoutize` takes the object from the serialized form and converts it
   # into the format that the model expects

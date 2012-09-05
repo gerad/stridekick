@@ -6,7 +6,19 @@ assert Day, 'Day is defined'
 # initialization
 
 today = new Day
-assert today, 'can be initialized'
+assert today, 'can be initialized without arguments'
+
+aug31 = new Day('2012-08-31')
+assert aug31.rfc3339String() is '2012-08-31',
+  'can be initialized with an rfc3339 formatted string'
+
+aug31 = new Day(2012, 8, 31)
+assert aug31.rfc3339String() is '2012-08-31',
+  'can be initialized with year, month and day arguments'
+
+aug31 = new Day(new Date(2012, 7, 31))
+assert aug31.rfc3339String() is '2012-08-31',
+  'can be initialized with a date'
 
 # add
 
@@ -60,6 +72,10 @@ assert weekRange[6].dayOfWeek() is 6, 'range ends on a saturday'
 # rfc3339String
 day = Day.ymd(2012, 1, 1)
 assert day.rfc3339String() is '2012-01-01', 'rfc3339String is correct'
+
+# localeDateString
+day = Day.ymd(2012, 1, 1)
+assert.equal day.localeDateString(), 'Sunday, January 01, 2012'
 
 # Day.range
 
