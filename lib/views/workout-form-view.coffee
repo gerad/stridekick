@@ -1,5 +1,5 @@
-summarizeRepeat = require './lib/summarize-repeat'
-Day = require '../../../models/calendar/day'
+summarizeRepeat = require '../helpers/summarize-repeat'
+Day = require '../models/day'
 
 class WorkoutFormView extends Backbone.View
   events:

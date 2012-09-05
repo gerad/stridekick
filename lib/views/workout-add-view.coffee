@@ -1,4 +1,4 @@
-Day = require '../../../models/calendar/day'
+Day = require '../models/day'
 
 class WorkoutAddView extends Backbone.View
   events:

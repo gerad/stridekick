@@ -19,5 +19,5 @@ html(lang='en')
     script(src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js")
     each val, name in contents.js.lib
       script(src="js/lib/#{name.replace(/\.coffee$/, '.js')}")
-    if contents.js[pagename + '.js']
+    if contents.js[pagename + '.coffee']
       script(src="js/#{pagename}.js")

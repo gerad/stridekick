@@ -1,5 +1,5 @@
-dayTemplate = require '../../../templates/calendar-widget-day'
-Day = require '../../../models/calendar/day'
+dayTemplate = require '../templates/calendar-widget-day'
+Day = require '../models/day'
 
 class CalendarView extends Backbone.View
   events:

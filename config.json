@@ -3,13 +3,14 @@
     "url": "http://localhost:8080",
     "name": "Stridekick",
     "owner": "Ace Fitness, LLC",
-    "description": "Get outside and play",
-    "index_articles": 3
+    "description": "Get outside and play"
   },
   "plugins": [
     "./node_modules/wintersmith-stylus/",
-    "./node_modules/wintersmith-coffee/",
-    "./plugins/wintersmith-coffee-locals",
-    "./plugins/wintersmith-browserify"
+    "./lib/plugins/wintersmith-page-locals",
+    "./lib/plugins/wintersmith-browserify"
+  ],
+  "browserifyPlugins": [
+    "./lib/plugins/browserify-jade"
   ]
 }

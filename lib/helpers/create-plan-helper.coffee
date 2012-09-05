@@ -1,6 +1,6 @@
-Day = require '../models/calendar/day'
+Day = require '../models/day'
 calendar = require './calendar-helper'
-{ extend } = require '../lib/utilities'
+{ extend } = require '../utilities'
 
 today = new Day()
 goalDay = Day.ymd(2012, 12, 1) # northface
