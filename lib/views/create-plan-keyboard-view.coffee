@@ -4,9 +4,16 @@ class CreatePlanKeyboardView extends Backbone.View
   events:
     'keylisten': 'keylisten'
     'keylisten select': 'keylistenSelect'
+    'keylisten textarea': 'keylistenTextarea'
 
   initialize: ->
     @plan = @model
+
+  keylistenTextarea: (e) ->
+    e.stopImmediatePropagation()
+    switch e.keyName
+      when 'esc'
+        @keylisten(e)
 
   keylistenSelect: (e) ->
     e.stopImmediatePropagation()

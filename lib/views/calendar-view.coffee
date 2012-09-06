@@ -1,5 +1,4 @@
 dayTemplate = require '../templates/calendar-widget-day'
-Day = require '../models/day'
 
 class CalendarView extends Backbone.View
   events:
@@ -26,7 +25,8 @@ class CalendarView extends Backbone.View
   # ## bindings
   currentDayBinding: (plan, day, options) ->
     @$('.day.current').removeClass('current')
-    @divForDay(day).addClass('current')
+    day = @divForDay(day).addClass('current')
+    $.uncover(day) if day.length
 
   # `workoutBinding` re-renders the workout in the calendar if it changes
   workoutBinding: (workout, options) ->
