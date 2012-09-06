@@ -1,39 +1,69 @@
+light-border-color = #AAA
+dark-border-color = black
+calendar-square-size = 80px
+weeknum-width = 25px
+
 body.create-plan
-  table#calendar
+  #calendar
     float left
-    margin-right 1em
-    table-layout fixed
+    margin 0 1em 1em 0
+
+    // layouts
+    .num, .day, .month
+      float left
 
     // widths
-    th:first-child
-      width 25px
-    th, td
-      width 80px
-      h3, p
-        width 76px
+    .num
+      width weeknum-width
+    .day
+      width calendar-square-size
+    .month
+      width 7 * calendar-square-size
 
     // heights
-    td
-      height 80px
+    .num, .day, .month
+      height calendar-square-size
+    .num
+      line-height calendar-square-size
+    .header
+      .num, .day, .month
+        height 2em
+        line-height @height + 0.25
 
     // borders
-    td
-      border solid #AAA
+    .week .day
+      border solid light-border-color
       border-width 1px 0 0 1px
-    tr.week
-      border-right 1px solid #AAA
-    tr.month th:last-child
-      border-top 1px solid #AAA
-    td.current
-      border 1px solid black
+    .week .day:last-child
+      width calendar-square-size + 1 // add 1 to offset the border
+      border-right-width 1px
+    .month
+      border-top 1px solid light-border-color
+    .week:last-child .day
+      height calendar-square-size + 1 // add 1 to offset the border
+      border-bottom 1px solid light-border-color
+    .day.current
+      position relative
+      .box
+        border 1px solid dark-border-color
+        position absolute
+        width 81px
+        height 81px
+        top -1px
+        left -1px
+        z-index 1
 
     // formatting
-    td
+    .day .box
+      overflow hidden
+      padding 2px
+    .num, .day, .month
+      font-size small
+    .week .day
       vertical-align top
       cursor pointer
-      .day
+      .date
         text-align right
-        font-size small
       h3, p
         margin 0
         padding 0
@@ -41,26 +71,29 @@ body.create-plan
         overflow hidden
         text-overflow ellipsis
         text-align center
-      p
-        height 2.5em
+    .num, .header .day, .header .month
+      text-align center
+      font-weight bold
 
+  .workout
+    #add-workout
 
-  form#workout
-    display none
-    float left
-    label
-      display block
-
-    p.repeat
-      span.summary
-        margin-left 1ex
-    p.repeat-options
+    form#workout
       display none
-      font-size small
-      margin-top -1em
+      float left
       label
-        display inline
-      label[for=repeat-kind]
+        display block
+
+      p.repeat
+        span.summary
+          margin-left 1ex
+      p.repeat-options
         display none
-      span.monthly
-        display none
+        font-size small
+        margin-top -1em
+        label
+          display inline
+        label[for=repeat-kind]
+          display none
+        span.monthly
+          display none

@@ -12,7 +12,7 @@ class CreatePlanRouter extends Backbone.Router
 
   initialize: ->
     @plan = new Plan(current_day: (new Day).rfc3339String())
-    @calendarView = new CalendarView(el: $('table#calendar'), model: @plan)
+    @calendarView = new CalendarView(el: $('#calendar'), model: @plan)
 
     @plan.on 'change:current_day', @currentDayBinding, @
     @plan.on 'workouts:add', @addWorkoutBinding, @

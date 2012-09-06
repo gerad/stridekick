@@ -3,7 +3,7 @@ Day = require '../models/day'
 
 class CalendarView extends Backbone.View
   events:
-    'click td': 'clickTd'
+    'click .day': 'clickDay'
 
   # ## lifecycle
   initialize: ->
@@ -14,15 +14,15 @@ class CalendarView extends Backbone.View
     $(document).keylisten @keylisten
 
   # ## events
-  clickTd: (e) ->
+  clickDay: (e) ->
     e.preventDefault()
-    day = $(e.target).closest('td').data('day')
+    day = $(e.target).closest('.day').data('day')
     @plan.set current_day: day
 
   # ## bindings
   currentDayBinding: (plan, day, options) ->
-    @$('td.current').removeClass('current')
-    @tdForDay(day).addClass('current')
+    @$('.day.current').removeClass('current')
+    @divForDay(day).addClass('current')
 
   # `workoutBinding` re-renders the workout in the calendar if it changes
   workoutBinding: (workout, options) ->
@@ -58,10 +58,10 @@ class CalendarView extends Backbone.View
           workout.remove()
 
   # ## helpers
-  tdForDay: (day) ->
-    @$("td[data-day='#{day}']")
+  divForDay: (day) ->
+    @$(".day[data-day='#{day}']")
 
-  # `renderDay` renders a given workout by finding the td for the workout
+  # `renderDay` renders a given workout by finding the .day for the workout
   # and updating its contents
   renderDay: (dayString) ->
     day = Day.ymd dayString.split('-')...
@@ -71,6 +71,6 @@ class CalendarView extends Backbone.View
       locals.workout = workout.pick('kind', 'description')
 
     html = dayTemplate day: locals
-    @tdForDay(dayString).html html
+    @divForDay(dayString).find('.box').html html
 
 module.exports = CalendarView
