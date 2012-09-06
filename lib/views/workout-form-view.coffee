@@ -25,6 +25,10 @@ class WorkoutFormView extends Backbone.View
   render: ->
     @setupForm()
     @$el.show()
+    if @workout.get('description')
+      @$('#description').select()
+    else
+      @$('#kind').focus()
 
   destroy: ->
     # unbind listeners on the current workout

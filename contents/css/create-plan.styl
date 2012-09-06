@@ -44,16 +44,18 @@ body.create-plan
     .week:last-child .day
       height calendar-square-size + 1 // add 1 to offset the border
       border-bottom 1px solid light-border-color
-    .day.current
+    .week .day.current .box
+      border 1px solid dark-border-color
+    .week .day
       position relative
       .box
-        border 1px solid dark-border-color
         position absolute
         width 81px
         height 81px
         top -1px
         left -1px
         z-index 1
+        border 1px solid transparent
 
     // formatting
     .day .box

@@ -5,7 +5,7 @@
 (function($, window, undefined) {
   $.fn.keylisten = function(fn) {
     if ($.attrFn) $.attrFn.keylisten = true;
-    return fn ? this.bind('keylisten', fn) : this.trigger('keylisten');
+    return fn ? this.on('keylisten', fn) : this.trigger('keylisten');
   };
 
   var keyNames = {
@@ -32,17 +32,23 @@
 
   var keyevent = $.browser.mozilla || $.browser.opera ? 'keypress' : 'keydown';
   $.event.special.keylisten = {
-    setup: function(data, namespaces) {
-      $(this).bind(keyevent, $.event.special.keylisten.handler)
+    add: function(handleObj) {
+      var selector = handleObj.selector;
+      var data = { selector: selector };
+      $(this).on(keyevent, selector, data, $.event.special.keylisten.handler);
     },
 
-    teardown: function(namespaces) {
-      $(this).unbind(keyevent, $.event.special.keylisten.handler)
+    remove: function(handleObj) {
+      var selector = handleObj.selector;
+      $(this).off(keyevent, selector, $.event.special.keylisten.handler);
     },
 
     handler: function(e) {
+      var selector = e.data.selector;
       // don't fire in text-accepting inputs that weren't bound directly
-      if (this !== e.target && $(e.target).is('textarea,select,input'))
+      var explicitlyBound = (selector ? $(e.target).is(selector) :
+          !$(e.target).is('textarea,select,input'))
+      if (this !== e.target && !explicitlyBound)
         return;
 
       var mods = '', key = keyNames[e.keyCode] || String.fromCharCode(e.which).toLowerCase();
@@ -55,7 +61,7 @@
 
       e.type = 'keylisten';
       e.keyName = mods + key;
-      $.event.handle.apply(this, arguments);
+      $(e.target).trigger(e);
     }
   };
 })(jQuery, window);

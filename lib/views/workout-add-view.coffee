@@ -13,6 +13,7 @@ class WorkoutAddView extends Backbone.View
     day = new Day(@plan.get('current_day'))
     @$('h3').text(day.localeString())
     @$el.show()
+    @$('button.add').focus()
 
   destroy: ->
     # unbind listeners on the current workout

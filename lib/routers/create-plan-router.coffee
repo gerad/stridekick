@@ -1,6 +1,7 @@
 CalendarView = require('../views/calendar-view')
 WorkoutFormView = require('../views/workout-form-view')
 WorkoutAddView = require('../views/workout-add-view')
+CreatePlanKeyboardView = require('../views/create-plan-keyboard-view')
 Plan = require('../models/plan')
 Day = require('../models/day')
 
@@ -13,6 +14,7 @@ class CreatePlanRouter extends Backbone.Router
   initialize: ->
     @plan = new Plan(current_day: (new Day).rfc3339String())
     @calendarView = new CalendarView(el: $('#calendar'), model: @plan)
+    @keyboardView = new CreatePlanKeyboardView(el: document, model: @plan)
 
     @plan.on 'change:current_day', @currentDayBinding, @
     @plan.on 'workouts:add', @addWorkoutBinding, @
