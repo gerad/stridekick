@@ -17,7 +17,11 @@ class CalendarView extends Backbone.View
   clickDay: (e) ->
     e.preventDefault()
     day = $(e.target).closest('.day').data('day')
-    @plan.set current_day: day
+    if @plan.get('current_day') is day
+      # double click edits the workout
+      @plan.addWorkout()
+    else
+      @plan.set(current_day: day)
 
   # ## bindings
   currentDayBinding: (plan, day, options) ->
@@ -56,6 +60,10 @@ class CalendarView extends Backbone.View
         if (workout = @plan.currentWorkout())?
           e.preventDefault() # prevent back
           workout.remove()
+
+      when 'return'
+        e.preventDefault()
+        @plan.addWorkout()
 
   # ## helpers
   divForDay: (day) ->
