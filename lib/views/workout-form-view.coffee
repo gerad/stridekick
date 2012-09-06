@@ -20,6 +20,9 @@ class WorkoutFormView extends Backbone.View
     @workout.on 'change:repeat_kind', @repeatKindBinding, @
     @workout.on 'change', @repeatSummaryBinding, @
 
+    @render()
+
+  render: ->
     @setupForm()
     @$el.show()
 

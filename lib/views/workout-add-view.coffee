@@ -7,7 +7,9 @@ class WorkoutAddView extends Backbone.View
   # ## lifecycle
   initialize: ->
     @plan = @model
+    @render()
 
+  render: ->
     day = new Day(@plan.get('current_day'))
     @$('h3').text(day.localeString())
     @$el.show()
