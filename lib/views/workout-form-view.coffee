@@ -4,11 +4,12 @@ Day = require '../models/day'
 class WorkoutFormView extends Backbone.View
   events:
     'change input#day': 'changeDay'
+    'change select#kind': 'changeKind'
+    'change textarea#description': 'changeDescription'
     'change input#repeat': 'changeRepeat'
     'change select#repeat-kind': 'changeRepeatKind'
     'change input.repeat-on': 'changeRepeatOn'
     'change input[name=repeat_by]': 'changeRepeatBy'
-    'change select#kind': 'changeKind'
 
   # ## lifecycle
   initialize: ->
@@ -21,10 +22,6 @@ class WorkoutFormView extends Backbone.View
 
     @setupForm()
     @$el.show()
-
-  save: ->
-    # save the form attributes to the workout
-    # @workout.reset(@workoutize(@serialize()))
 
   destroy: ->
     # unbind listeners on the current workout
@@ -39,22 +36,6 @@ class WorkoutFormView extends Backbone.View
 
   changeDay: (e) ->
     @workout.set day: @$('input#day').val()
-
-  changeRepeat: (e) ->
-    isRepeating = $(e.target).is(':checked')
-    @workout.set repeat: isRepeating
-
-  changeRepeatKind: (e) ->
-    @workout.set repeat_kind: $(e.target).val()
-
-  changeRepeatBy: (e) ->
-    repeat_by = @$('input[name=repeat_by]:checked').val()
-    @workout.set repeat_by: repeat_by
-
-  changeRepeatOn: (e) ->
-    repeat_on = @$('input.repeat-on:checked').map ->
-      @name.match(/^repeat-on-(\d)$/)[1]
-    @workout.set repeat_on: repeat_on
 
   # `changeKind` changes the workout kind when the select#kind changes. If the
   # select#kind is changed to "Other..." then a javascript prompt asks for the
@@ -76,6 +57,24 @@ class WorkoutFormView extends Backbone.View
       # cancel was hit, go back to the old kind
       @kindBinding()
 
+  changeDescription: (e) ->
+    @workout.set description: @$('textarea#description').val()
+
+  changeRepeat: (e) ->
+    isRepeating = $(e.target).is(':checked')
+    @workout.set repeat: isRepeating
+
+  changeRepeatKind: (e) ->
+    @workout.set repeat_kind: $(e.target).val()
+
+  changeRepeatBy: (e) ->
+    repeat_by = @$('input[name=repeat_by]:checked').val()
+    @workout.set repeat_by: repeat_by
+
+  changeRepeatOn: (e) ->
+    repeat_on = @$('input.repeat-on:checked').map ->
+      @name.match(/^repeat-on-(\d)$/)[1]
+    @workout.set repeat_on: repeat_on
 
   # ## bindings
   kindBinding: ->
@@ -165,34 +164,7 @@ class WorkoutFormView extends Backbone.View
     delete attributes.repeat_summary
 
     # handle the remaining attributes in bulk
-    @deserialize attributes
-
-  # `workoutize` takes the object from the serialized form and converts it
-  # into the format that the model expects
-  workoutize: (object) ->
-    # change the `repeat_on` checkboxes into the single string the model
-    # expects
-    repeat_on = []
-    for k, v of object
-      if (match = k.match(/^repeat-on-(\d)$/))?
-        repeat_on.push match[1]
-        delete object[k]
-    if repeat_on.length > 0
-      object.repeat_on = repeat_on.join('')
-
-    object
-
-  # `serialize` creates an object out of the form (so it can then be passed to
-  # the model's `set` method to set all the attributes for the workout)
-  serialize: ->
-    ret = {}
-    for { name, value } in @$el.serializeArray()
-      ret[name] = value
-    ret
-
-  # `deserialize` sets all the field values based on the passed in `object`
-  deserialize: (object) ->
-    for name, value of object
+    for name, value of attributes
       @$("##{name}").val(value)
 
 module.exports = WorkoutFormView
