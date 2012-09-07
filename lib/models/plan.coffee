@@ -5,10 +5,14 @@ class Plan extends Backbone.Model
     @workouts = new Workout.Collection
     @workouts.on 'all', @proxyWorkoutsEvent, @
     @on 'workouts:change:day', @workoutDayBinding, @
+    @on 'workouts:change:kind', @workoutKindBinding, @
 
   # ## helpers
+  loadWorkouts: ->
+    @workouts.fetch()
+
   addWorkout: ->
-    @workouts.getOrAdd(@get('current_day'))
+    @workouts.getOrCreate(@get('current_day'))
 
   currentWorkout: ->
     @workoutAtDay(@get('current_day'))
@@ -23,6 +27,14 @@ class Plan extends Backbone.Model
   # longer being edited.
   workoutDayBinding: (workout, day, options) ->
     @set { current_day: day }, { workout: workout }
+
+  # `workoutKindBinding` is called when the workout `kind` changes. It infers
+  # a description for the workout based on other workouts of the same kind.
+  workoutKindBinding: (workout, kind, options) ->
+    # don't do anything if the description has been manually edited
+    unless workout.get('description_edited')
+      if (closest = @workouts.closestOfSameKind(workout))?
+        workout.save description: closest.get('description')
 
   # ## proxies
 

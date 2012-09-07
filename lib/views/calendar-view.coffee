@@ -1,4 +1,5 @@
 dayTemplate = require '../templates/calendar-widget-day'
+Day = require '../models/day'
 
 class CalendarView extends Backbone.View
   events:
@@ -7,10 +8,9 @@ class CalendarView extends Backbone.View
   # ## lifecycle
   initialize: ->
     @plan = @model
-    @plan.on 'change:current_day', @currentDayBinding, @
-    @plan.on 'workouts:add workouts:remove workouts:change', @workoutBinding, @
-
-    $(document).keylisten @keylisten
+    @plan.on('change:current_day', @currentDayBinding, @)
+    @plan.on('workouts:add workouts:remove workouts:change', @workoutBinding, @)
+    @plan.on('workouts:reset', @workoutsResetBinding, @)
 
   # ## events
   clickDay: (e) ->
@@ -38,6 +38,10 @@ class CalendarView extends Backbone.View
     if previousDay? and day isnt previousDay
       @renderDay(previousDay)
 
+  # `workoutsResetBinding` rerenders all the workouts in the calendar
+  workoutsResetBinding: (workouts, options) ->
+    workouts.each @workoutBinding, @
+
   # ## helpers
   divForDay: (day) ->
     @$(".day[data-day='#{day}']")
@@ -45,7 +49,7 @@ class CalendarView extends Backbone.View
   # `renderDay` renders a given workout by finding the .day for the workout
   # and updating its contents
   renderDay: (dayString) ->
-    day = Day.ymd dayString.split('-')...
+    day = new Day dayString
 
     locals = date: day.dayOfMonth()
     if (workout = @plan.workoutAtDay(dayString))?

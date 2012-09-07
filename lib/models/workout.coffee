@@ -1,3 +1,5 @@
+Day = require '../day'
+
 class Workout extends Backbone.Model
   idAttribute: 'day'
   defaults:
@@ -23,22 +25,32 @@ class Workout extends Backbone.Model
     for day in @get('repeat_on')
       +day
 
-  reset: (attributes) ->
-    @clear silent: true
-    @set attributes
-
-  remove: ->
-    @collection?.remove(@)
-
   pick: (attributes...) ->
     _.pick @attributes, attributes...
 
 class Workout.Collection extends Backbone.Collection
   model: Workout
-  getOrAdd: (day) ->
-    unless (ret = @get(day))?
-      ret = new @model(day: day)
-      @add(ret)
-    ret
+  localStorage: new Backbone.LocalStorage('workouts')
+
+  # `daysBetween` returns the # of days between two workouts
+  daysBetween = (a, b) ->
+    aDay = new Day(a.get('day'))
+    bDay = new Day(b.get('day'))
+    Math.abs(aDay.daysUntil(bDay))
+
+  # `closest` returns the closest (chronologically) workout of the same kind
+  # as the given `workout`.
+  closestOfSameKind: (workout) ->
+    @reduce (closest, other) ->
+      if workout isnt other and other.get('kind') is workout.get('kind')
+        if not closest
+          closest = other
+        else if daysBetween(workout, other) < daysBetween(workout, closest)
+          closest = other
+      closest
+
+
+  getOrCreate: (day) ->
+    @get(day) ? @create(day: day)
 
 module.exports = Workout

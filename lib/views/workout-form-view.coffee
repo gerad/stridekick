@@ -16,6 +16,7 @@ class WorkoutFormView extends Backbone.View
     @workout = @model
 
     @workout.on 'change:kind', @kindBinding, @
+    @workout.on 'change:description', @descriptionBinding, @
     @workout.on 'change:repeat', @repeatBinding, @
     @workout.on 'change:repeat_kind', @repeatKindBinding, @
     @workout.on 'change', @repeatSummaryBinding, @
@@ -26,7 +27,7 @@ class WorkoutFormView extends Backbone.View
     @setupForm()
     @$el.show()
     if @workout.get('description')
-      @$('#description').select()
+      @$('#description').focus()
     else
       @$('#kind').focus()
 
@@ -42,7 +43,7 @@ class WorkoutFormView extends Backbone.View
   # ## events
 
   changeDay: (e) ->
-    @workout.set day: @$('input#day').val()
+    @workout.save day: @$('input#day').val()
 
   # `changeKind` changes the workout kind when the select#kind changes. If the
   # select#kind is changed to "Other..." then a javascript prompt asks for the
@@ -59,33 +60,39 @@ class WorkoutFormView extends Backbone.View
         kind = null
 
     if kind?
-      @workout.set kind: kind
+      @workout.save kind: kind
     else
       # cancel was hit, go back to the old kind
       @kindBinding()
 
   changeDescription: (e) ->
-    @workout.set description: @$('textarea#description').val()
+    @workout.save
+      description: @$('textarea#description').val()
+      description_edited: true
 
   changeRepeat: (e) ->
     isRepeating = $(e.target).is(':checked')
-    @workout.set repeat: isRepeating
+    @workout.save repeat: isRepeating
 
   changeRepeatKind: (e) ->
-    @workout.set repeat_kind: $(e.target).val()
+    @workout.save repeat_kind: $(e.target).val()
 
   changeRepeatBy: (e) ->
     repeat_by = @$('input[name=repeat_by]:checked').val()
-    @workout.set repeat_by: repeat_by
+    @workout.save repeat_by: repeat_by
 
   changeRepeatOn: (e) ->
     repeat_on = @$('input.repeat-on:checked').map ->
       @name.match(/^repeat-on-(\d)$/)[1]
-    @workout.set repeat_on: repeat_on
+    @workout.save repeat_on: repeat_on
 
   # ## bindings
   kindBinding: ->
     @$('select#kind').val(@workout.get('kind'))
+
+  descriptionBinding: ->
+    @$('#description').val(@workout.get('description'))
+
 
   # `repeatBinding` checks the repeat checkbox if the workout is repeating,
   # and toggles the visibility of the appopriate elements

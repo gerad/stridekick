@@ -32,7 +32,7 @@ class CreatePlanKeyboardView extends Backbone.View
       when 'backspace'
         if (workout = @plan.currentWorkout())?
           e.preventDefault() # prevent back
-          workout.remove()
+          workout.destroy()
 
       when 'return'
         e.preventDefault()

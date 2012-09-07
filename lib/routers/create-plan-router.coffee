@@ -12,12 +12,17 @@ class CreatePlanRouter extends Backbone.Router
   # ## lifecycle
 
   initialize: ->
-    @plan = new Plan(current_day: (new Day).rfc3339String())
+    today = (new Day).rfc3339String()
+
+    @plan = new Plan(current_day: today)
     @calendarView = new CalendarView(el: $('#calendar'), model: @plan)
     @keyboardView = new CreatePlanKeyboardView(el: document, model: @plan)
 
     @plan.on 'change:current_day', @currentDayBinding, @
-    @plan.on 'workouts:add', @addWorkoutBinding, @
+    @plan.on 'workouts:add workouts:remove', @workoutBinding, @
+
+    @plan.loadWorkouts()
+    @renderWorkout()
 
   # ## routes
   show: (day) ->
@@ -39,10 +44,10 @@ class CreatePlanRouter extends Backbone.Router
   currentDayBinding: (plan, day, options) ->
     @navigate(day, trigger: true)
 
-  # `addWorkoutBinding` is called whenever a workout is added. It re-renders
-  # the workout for the current day if the workout was added to the current
-  # day.
-  addWorkoutBinding: (workout, workouts, options) ->
+  # `workoutBinding` is called whenever a workout is added or removed. It
+  # re-renders the workout for the current day if the changed workout happened
+  # during the current day
+  workoutBinding: (workout, workouts, options) ->
     if workout.get('day') is @plan.get('current_day')
       @renderWorkout()
 
