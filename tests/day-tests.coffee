@@ -1,5 +1,5 @@
 assert = require 'assert'
-Day = require '../models/calendar/day'
+Day = require '../models/day'
 
 assert Day, 'Day is defined'
 
@@ -73,9 +73,9 @@ assert weekRange[6].dayOfWeek() is 6, 'range ends on a saturday'
 day = Day.ymd(2012, 1, 1)
 assert day.rfc3339String() is '2012-01-01', 'rfc3339String is correct'
 
-# localeDateString
+# localeString
 day = Day.ymd(2012, 1, 1)
-assert.equal day.localeDateString(), 'Sunday, January 01, 2012'
+assert.equal day.localeString(), 'Sunday, January 01, 2012'
 
 # Day.range
 

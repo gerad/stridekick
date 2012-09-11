@@ -1,6 +1,6 @@
 assert = require 'assert'
 calendar = require '../helpers/calendar-helper'
-Day = require '../models/calendar/day'
+Day = require '../models/day'
 
 assert calendar, 'function exists'
 

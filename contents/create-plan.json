@@ -1,4 +1,0 @@
-{
-  "template": "create-plan.jade",
-  "locals": "../helpers/create-plan-helper.coffee"
-}

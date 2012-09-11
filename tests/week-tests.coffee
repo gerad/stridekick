@@ -1,6 +1,6 @@
 assert = require 'assert'
-Week = require '../models/calendar/week'
-Day = require '../models/calendar/day'
+Week = require '../models/week'
+Day = require '../models/day'
 
 assert Week, 'Week is defined'
 

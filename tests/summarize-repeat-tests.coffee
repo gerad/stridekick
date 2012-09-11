@@ -1,4 +1,4 @@
-summarize = require '../contents/js/views/lib/summarize-repeat'
+summarize = require '../helpers/summarize-repeat'
 assert = require 'assert'
 
 assert summarize, 'should exist'
