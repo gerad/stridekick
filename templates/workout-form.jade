@@ -1,0 +1,46 @@
+form#workout
+  p.day
+    label(for="day") Date
+    input#day(name="day", type="date", value=workout.rfc3339Day)
+
+  p.kind
+    label(for="kind") Kind
+    select#kind(name="kind")
+      option Hill Run
+      option Long Run
+      option(selected=true) Recovery Run
+      option Speedwork
+      option Tempo Run
+      option.separator(disabled=true)
+      option(value="add") Other&hellip;
+
+  p.description
+    label(for="description") Description
+    textarea#description(name="description")
+
+  p.repeat
+    label(for="repeat")
+      input#repeat(name="repeat", type="checkbox")
+      span.summary Repeat&hellip;
+
+  p.repeat-options
+    label(for='repeat-kind') Repeat
+    select#repeat-kind(name="repeat_kind")
+      option(value="weekly") Weekly
+      option(value="biweekly") Biweekly
+      option(value="monthly") Monthly
+    span.weekly
+      |  on: 
+      each weekday, i in workout.weekdays
+        - var name = "repeat-on-" + i;
+        label(for=name)
+          input.repeat-on(id=name, name=name, type="checkbox")
+          = ' ' + weekday
+    span.monthly
+      |  by: 
+      label(for="day-of-week")
+        input#day-of-week(name="repeat_by", type="radio", value="weekday")
+        |  day of week
+      label(for="day-of-month")
+        input#day-of-month(name="repeat_by", type="radio", value="date")
+        |  day of month

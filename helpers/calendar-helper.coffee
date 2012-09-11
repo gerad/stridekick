@@ -2,7 +2,7 @@ Week = require '../models/week'
 Day = require '../models/day'
 { build } = require '../utilities'
 
-weekdays = "Su Mo Tu We Th Fr Sa".split(/\s+/)
+weekdays = require './weekdays'
 months = """January February March April May June July August September
   October November December""".split(/\s+/)
 

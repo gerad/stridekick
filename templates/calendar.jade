@@ -1,0 +1,16 @@
+#calendar
+  .header
+    .num #
+    each weekday in calendar.weekdays
+      .day= weekday
+  each week in calendar.weeks
+    if week.month
+      .header
+        .num
+        .month= week.month
+    .week
+      .num= week.num
+      each day in week.days
+        .day(class=day.cssClass, data-day=day.rfc3339)
+          .box
+            include calendar-day

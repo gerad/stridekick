@@ -89,8 +89,6 @@ brequire = (filePath, parentPath) ->
     if (script = brequire.scriptForRequest(req))?
       res.writeHead(200, 'Content-Type': 'application/javascript')
       res.end(script)
-      if /jquery/.test req.url
-        console.log(script)
     else
       req.brequire = -> scripts
       next()
