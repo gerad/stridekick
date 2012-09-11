@@ -93,7 +93,6 @@ class WorkoutFormView extends Backbone.View
   descriptionBinding: ->
     @$('#description').val(@workout.get('description'))
 
-
   # `repeatBinding` checks the repeat checkbox if the workout is repeating,
   # and toggles the visibility of the appopriate elements
   repeatBinding: ->
